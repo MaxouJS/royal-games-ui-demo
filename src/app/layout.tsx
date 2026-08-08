@@ -8,7 +8,7 @@ const display = Baloo_2({ subsets: ["latin"], weight: ["600", "700", "800"], var
 const body = Nunito({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  title: "royal-games-ui — Midnight Court UI kit",
+  title: "royal-games-ui · Midnight Court UI kit",
   description:
     "Royal enamel UI kit for Capacitor mobile games. Two skins, one grammar: docks, ribbons, boards, pieces and HUD.",
 };

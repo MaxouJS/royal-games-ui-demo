@@ -6,17 +6,7 @@ import { Demo } from "./client";
 
 const e = findExport("/game/keys/")!;
 
-const CODE = `import { Keys, KeyRow, Key } from "@objectifthunes/royal-games-ui";
-
-<Keys>
-  <KeyRow>{"QWERTYUIOP".split("").map((k) => <Key key={k} onClick={() => type(k)}>{k}</Key>)}</KeyRow>
-  <KeyRow>{"ASDFGHJKL".split("").map((k) => <Key key={k}>{k}</Key>)}</KeyRow>
-  <KeyRow>
-    <Key wide gold>⏎</Key>
-    {"ZXCVBNM".split("").map((k) => <Key key={k}>{k}</Key>)}
-    <Key wide>⌫</Key>
-  </KeyRow>
-</Keys>`;
+const CODE = "<Keys>\n  <KeyRow>{\"QWERTY\u2026\".split(\"\").map((k) => <Key key={k} onClick={() => type(k)}>{k}</Key>)}</KeyRow>\n  <KeyRow><Key wide gold>\u23ce</Key> \u2026 <Key wide>\u232b</Key></KeyRow>\n</Keys>";
 
 export default function Page() {
   return (
@@ -24,11 +14,7 @@ export default function Page() {
       <Preview center><Demo /></Preview>
       <Source code={CODE} />
       <Notes>
-        <p>
-          Keys are dark — stone faces, ivory glyphs, the gold enter as the only accent — because a
-          light keyboard in a dark theme is nonsense. Arrangement and input handling belong to the
-          game; the package ships the pieces.
-        </p>
+        <p>Dark stone keys with ivory glyphs, the gold enter is the only accent. Arrangement and input handling belong to the game.</p>
       </Notes>
     </ExportPage>
   );

@@ -30,7 +30,7 @@ export default function Home() {
         <p>
           The Midnight Court UI kit for Capacitor mobile games: docks that weld to the edges, ribbons
           with real wings, a tab bar whose active tab is a full raised button, and boards whose pieces
-          are miniature enamel. Graphical-first React components — your game keeps the logic.
+          are miniature enamel. Graphical-first React components. Your game keeps the logic.
         </p>
       </div>
       <Preview center><HomeHero /></Preview>
@@ -46,14 +46,12 @@ export default function Home() {
       <Source code={USAGE} />
       <h2 className="section">Explore</h2>
       <div className="home-grid">
-        {GROUPS.flatMap((g) =>
-          g.pages.map((p) => (
-            <Link key={p.href} href={p.href} className="home-card">
-              <b>{p.name}</b>
-              <p>{p.lede}</p>
-            </Link>
-          )),
-        )}
+        {GROUPS.map((g) => (
+          <Link key={g.href} href={g.href} className="home-card">
+            <b>{g.title}</b>
+            <p>{g.lede} {g.pages.length > 1 ? `${g.pages.length} pages.` : ""}</p>
+          </Link>
+        ))}
       </div>
     </article>
   );

@@ -31,7 +31,11 @@ export function SideBySide() {
   );
 }
 
-const COLORS: TileColor[] = ["purple", "green", "blue", "red", "gold", "green"];
+const GRID: TileColor[] = [
+  "purple", "green", "blue", "red", "gold", "green",
+  "blue", "gold", "purple", "green", "red", "purple",
+  "red", "blue", "gold", "purple", "green", "blue",
+];
 
 export function Motion() {
   const { ref, replay } = usePlayOnView<HTMLDivElement>();
@@ -39,8 +43,8 @@ export function Motion() {
     <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center" }}>
       <div ref={ref} style={{ width: 280 }}>
         <Board columns={6} gap={5}>
-          {Array.from({ length: 18 }, (_, i) => (
-            <GameTile key={i} color={COLORS[(i * 5 + (i % 7)) % COLORS.length]} index={i} />
+          {GRID.map((color, i) => (
+            <GameTile key={i} color={color} index={i} />
           ))}
         </Board>
       </div>

@@ -31,7 +31,7 @@ export function Preview({ col, center, style, children }: PreviewProps) {
   );
 }
 
-/** Bare phone frame with a status bar — hosts a package Screen composition. */
+/** Bare phone frame with a status bar, hosts a package Screen composition. */
 export function PhoneFrame({ children }: { children?: ReactNode }) {
   const { skin } = useDocsSkin();
   return (

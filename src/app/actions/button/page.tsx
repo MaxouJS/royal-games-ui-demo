@@ -1,35 +1,21 @@
-import { ExportPage, Notes, Section } from "@/components/ExportPage";
+import { ExportPage, Notes } from "@/components/ExportPage";
 import { Preview } from "@/components/Preview";
 import { Source } from "@/components/Source";
 import { findExport } from "@/components/exports";
-import { Tones, Sizes, Prices } from "./client";
+import { Demo } from "./client";
 
 const e = findExport("/actions/button/")!;
 
-const CODE = `import { Button, Strike, Coin } from "@objectifthunes/royal-games-ui";
-
-<Button tone="accent" size="hero" sheen>PLAY</Button>
-<Button tone="positive">CLAIM</Button>
-<Button tone="gold" size="sm"><Strike>€19.99</Strike>€9.99</Button>
-<Button tone="primary" icon dot>✉</Button>
-<Button tone="accent" disabled>PLAY</Button>`;
+const CODE = "<Button tone=\"accent\" size=\"hero\" sheen>PLAY</Button>\n<Button tone=\"positive\">CLAIM</Button>\n<Button tone=\"gold\" size=\"sm\"><Strike>\u20ac19.99</Strike>\u20ac9.99</Button>\n<Button tone=\"primary\" icon dot>\u2709</Button>\n<Button tone=\"accent\" disabled>PLAY</Button>";
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview><Tones /></Preview>
+      <Preview center><Demo /></Preview>
       <Source code={CODE} />
       <Notes>
-        <p>
-          Five material tones over one construction. Hold one down: the face slides onto its
-          thick bottom bevel (Enamel) or collapses its extrusion (Gloss) — <b>transform-only</b>,
-          so the button and its section never move. Disabled buttons ignore presses entirely.
-        </p>
+        <p>Five material tones, three sizes, icon squares, block width, hero sheen and the corner dot. Pressing sinks the face onto its bevel, <b>transform-only</b>, so neither the button nor its section ever moves. Disabled buttons ignore presses.</p>
       </Notes>
-      <Section>Sizes, icons & badges</Section>
-      <Preview><Sizes /></Preview>
-      <Section>Price patterns</Section>
-      <Preview><Prices /></Preview>
     </ExportPage>
   );
 }

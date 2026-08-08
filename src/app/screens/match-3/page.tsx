@@ -15,7 +15,7 @@ export default function Page() {
       <Source code={CODE} />
       <Notes>
         <p>
-          Composed entirely from package components — no local CSS. Scroll it into view or hit
+          Composed entirely from package components, no local CSS. Scroll it into view or hit
           ▶ MOTION to watch the entrance choreography; everything tappable is live.
         </p>
       </Notes>

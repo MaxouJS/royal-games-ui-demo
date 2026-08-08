@@ -1,7 +1,7 @@
 "use client";
 
 /* Full-screen compositions mirroring the validated design reference.
-   Everything below is package components — no local styling. */
+   Everything below is package components, no local styling. */
 
 import {
   Avatar, Board, BoardCell, Body, Booster, BottomStack, Button, Chest, Chrome, ChromeRow, Coin,
