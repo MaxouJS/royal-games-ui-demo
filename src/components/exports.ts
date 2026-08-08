@@ -11,10 +11,24 @@ export interface DocGroup {
 
 export const GROUPS: DocGroup[] = [
   {
+    title: "Screens",
+    pages: [
+      { href: "/screens/", name: "All screens", lede: "All nine full screens side by side — lobby to word game, every one composed purely from package components." },
+      { href: "/screens/lobby/", name: "Lobby", lede: "Two-tier chrome, quest panel, Royal Pass strip and the gift dock." },
+      { href: "/screens/map/", name: "World map", lede: "Painted night scene, springing pins, and the objective dock welded to the tab bar." },
+      { href: "/screens/shop/", name: "Shop", lede: "Featured bundle with sale ribbons, gem packs, and the free-coins offer dock." },
+      { href: "/screens/victory/", name: "Victory", lede: "Result sheet, star burst, rewards, and the action dock." },
+      { href: "/screens/ranks/", name: "Leaderboard", lede: "Podium and season rows with the you-highlight." },
+      { href: "/screens/settings/", name: "Settings", lede: "Grouped rows, footer dock, and live controls." },
+      { href: "/screens/merge/", name: "Merge game", lede: "The validated merge screen: tasks dock, night board, item dock." },
+      { href: "/screens/match-3/", name: "Match-3 game", lede: "The validated match-3 screen: HUD dock, candy board, boosters dock." },
+      { href: "/screens/word/", name: "Word game", lede: "The validated word screen: streaks, the carded ladder, and the dark keyboard." },
+    ],
+  },
+  {
     title: "Foundations",
     pages: [
-      { href: "/foundations/skins/", name: "Skins", lede: "One grammar, two renderings — Enamel and Gloss, switched with a single attribute." },
-      { href: "/foundations/motion/", name: "Motion", lede: "Entrance choreography, replay, and the tap bounce. All transform-only, all reduced-motion aware." },
+      { href: "/foundations/skins/", name: "Skins & motion", lede: "One grammar, two renderings — and choreography that plays everywhere. Switched with a single attribute." },
     ],
   },
   {
@@ -88,20 +102,6 @@ export const GROUPS: DocGroup[] = [
       { href: "/game/word/", name: "Word board", lede: "Letter sockets and judged enamel tiles inside the dark gold-framed card." },
       { href: "/game/keys/", name: "Keys", lede: "Dark stone keyboard keys with the gold enter." },
       { href: "/game/hud/", name: "HUD", lede: "Moves, objectives, boosters and map pins." },
-    ],
-  },
-  {
-    title: "Screens",
-    pages: [
-      { href: "/screens/lobby/", name: "Lobby", lede: "Two-tier chrome, quest panel, Royal Pass strip and the gift dock." },
-      { href: "/screens/map/", name: "World map", lede: "Painted night scene, springing pins, and the objective dock welded to the tab bar." },
-      { href: "/screens/shop/", name: "Shop", lede: "Featured bundle with sale ribbons, gem packs, and the free-coins offer dock." },
-      { href: "/screens/victory/", name: "Victory", lede: "Result sheet, star burst, rewards, and the action dock." },
-      { href: "/screens/ranks/", name: "Leaderboard", lede: "Podium and season rows with the you-highlight." },
-      { href: "/screens/settings/", name: "Settings", lede: "Grouped rows, footer dock, and live controls." },
-      { href: "/screens/merge/", name: "Merge game", lede: "The validated merge screen: tasks dock, night board, item dock." },
-      { href: "/screens/match-3/", name: "Match-3 game", lede: "The validated match-3 screen: HUD dock, candy board, boosters dock." },
-      { href: "/screens/word/", name: "Word game", lede: "The validated word screen: streaks, the carded ladder, and the dark keyboard." },
     ],
   },
 ];

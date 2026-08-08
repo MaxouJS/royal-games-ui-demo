@@ -34,6 +34,12 @@ export default function Home() {
         </p>
       </div>
       <Preview center><HomeHero /></Preview>
+      <div style={{ display: "flex", gap: 12, margin: "18px 0 6px" }}>
+        <Link href="/screens/" className="home-card" style={{ flex: 1, textAlign: "center" }}>
+          <b>See the nine full screens →</b>
+          <p>Lobby to word game, live and animated, composed purely from package components.</p>
+        </Link>
+      </div>
       <h2 className="section">Install</h2>
       <Source code={INSTALL} lang="bash" />
       <h2 className="section">Use</h2>

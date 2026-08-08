@@ -150,3 +150,16 @@ h2.section {
 }
 .hero h1 em { font-style: normal; color: var(--gold-light); }
 .hero p { color: var(--ink-soft); max-width: 620px; margin: 16px 0 24px; font-size: 17px; }
+
+/* previews are motion scopes */
+.preview-inner.rg-play { animation: prevRise 0.45s ease-out backwards; }
+@keyframes prevRise { from { opacity: 0; transform: translateY(14px); } }
+
+/* screens overview grid */
+.screens-grid { display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; }
+.screens-grid figure { margin: 0; }
+.screens-grid figcaption {
+  text-align: center; padding-top: 12px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-ghost);
+}

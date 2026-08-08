@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Ribbon, Counter, Coin, Toggle, SkinProvider } from "@objectifthunes/royal-games-ui";
+import { Button, Ribbon, Counter, Coin, Toggle, SkinProvider, Board, GameTile, usePlayOnView, type TileColor } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 
 export function Demo() {
@@ -27,6 +27,24 @@ export function SideBySide() {
           </div>
         </SkinProvider>
       ))}
+    </div>
+  );
+}
+
+const COLORS: TileColor[] = ["purple", "green", "blue", "red", "gold", "green"];
+
+export function Motion() {
+  const { ref, replay } = usePlayOnView<HTMLDivElement>();
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center" }}>
+      <div ref={ref} style={{ width: 280 }}>
+        <Board columns={6} gap={5}>
+          {Array.from({ length: 18 }, (_, i) => (
+            <GameTile key={i} color={COLORS[(i * 5 + (i % 7)) % COLORS.length]} index={i} />
+          ))}
+        </Board>
+      </div>
+      <Button tone="gold" size="sm" onClick={replay}>↻ REPLAY ENTRANCE</Button>
     </div>
   );
 }

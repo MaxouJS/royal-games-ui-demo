@@ -1,0 +1,37 @@
+"use client";
+
+import Link from "next/link";
+import { PhoneFrame } from "@/components/Preview";
+import {
+  LobbyScreen, MapScreen, ShopScreen, VictoryScreen, RanksScreen, SettingsScreen,
+  MergeScreen, Match3Screen, WordScreen,
+} from "@/examples/screens";
+
+const SCREENS = [
+  { title: "Lobby", href: "/screens/lobby/", C: LobbyScreen },
+  { title: "World map", href: "/screens/map/", C: MapScreen },
+  { title: "Shop", href: "/screens/shop/", C: ShopScreen },
+  { title: "Victory", href: "/screens/victory/", C: VictoryScreen },
+  { title: "Leaderboard", href: "/screens/ranks/", C: RanksScreen },
+  { title: "Settings", href: "/screens/settings/", C: SettingsScreen },
+  { title: "Merge game", href: "/screens/merge/", C: MergeScreen },
+  { title: "Match-3 game", href: "/screens/match-3/", C: Match3Screen },
+  { title: "Word game", href: "/screens/word/", C: WordScreen },
+];
+
+export function AllScreens() {
+  return (
+    <div className="preview">
+      <div className="preview-inner center" style={{ padding: "36px 16px" }}>
+        <div className="screens-grid">
+          {SCREENS.map(({ title, href, C }) => (
+            <figure key={href}>
+              <PhoneFrame><C /></PhoneFrame>
+              <figcaption><Link href={href}>{title} →</Link></figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
