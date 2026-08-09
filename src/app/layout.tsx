@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Baloo_2, Nunito } from "next/font/google";
+import { Baloo_2, Luckiest_Guy, Nunito } from "next/font/google";
 import "./globals.css";
 import { DocsShell, DocsHeader } from "@/components/DocsShell";
 import { Sidebar } from "@/components/Sidebar";
@@ -14,6 +14,11 @@ const body = Nunito({
   weight: ["600", "700", "800"],
   variable: "--font-body",
 });
+const wordmark = Luckiest_Guy({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-wordmark",
+});
 
 export const metadata: Metadata = {
   title: "royal-games-ui · Midnight Court UI kit",
@@ -27,7 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${wordmark.variable}`}
+    >
       <body>
         <DocsShell>
           <div className="shell">

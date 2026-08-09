@@ -254,6 +254,13 @@ h2.section {
   border-radius: calc(100cqw * 0.1);
   overflow: hidden;
 }
+.phone-skin {
+  --rg-safe-top: calc(100cqw / 332 * 28);
+  --rg-safe-bottom: 0px;
+  --rg-font-wordmark: var(--font-wordmark), var(--font-display), cursive;
+  --rg-font-display: var(--font-display), system-ui, sans-serif;
+  --rg-font-body: var(--font-body), system-ui, sans-serif;
+}
 .phone-screen [data-rg-skin],
 .phone-skin,
 .phone-skin > .rg-screen-fit {
