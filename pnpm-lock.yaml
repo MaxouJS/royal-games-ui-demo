@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@objectifthunes/royal-games-ui':
-        specifier: 1.0.6
-        version: 1.0.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.1.0
+        version: 1.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next:
         specifier: 16.2.7
         version: 16.2.7(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -230,8 +230,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@objectifthunes/royal-games-ui@1.0.6':
-    resolution: {integrity: sha512-ZShna20QISFLb4ugExMGqg0QUSot+W0xCa0+dMJLDzjI/oAnHhSfrOkhs+ERHSfKOd4tYgkua7yuSXH7so0/dA==}
+  '@objectifthunes/royal-games-ui@1.1.0':
+    resolution: {integrity: sha512-vPU4/6d9qW3Ut/21HkxoXZ0DegHPLFxeDBKZZDhMk+prVeyCysd8qd25CRyoa8YORiASZGu+XPZTXSwhmHHj/g==}
     peerDependencies:
       react: '>=19'
       react-dom: '>=19'
@@ -624,7 +624,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.2.7':
     optional: true
 
-  '@objectifthunes/royal-games-ui@1.0.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@objectifthunes/royal-games-ui@1.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)

@@ -138,13 +138,13 @@ export function LobbyScreen() {
       <Body>
         <Wordmark strap="His Majesty awaits">Royal Games</Wordmark>
         <Panel tone="paper">
-          <GroupKicker variant="quest">Chapter 3</GroupKicker>
+          <GroupKicker variant="compact">Chapter 3</GroupKicker>
           <ScreenName as="h2">The East Gate</ScreenName>
           <Counters aria-label="Chapter objectives" layout="spread">
-            <Counter density="objective" graphic="⚑">
+            <Counter density="compact" graphic="⚑">
               12/20
             </Counter>
-            <Counter density="objective" graphic="★">
+            <Counter density="compact" graphic="★">
               31/60
             </Counter>
             <TimerPill aria-label="Two days and four hours remaining">
@@ -173,7 +173,7 @@ export function LobbyScreen() {
         </Panel>
       </Body>
       <BottomStack>
-        <Dock tone="stone" density="gift">
+        <Dock tone="stone" density="roomy">
           <SettingsRow
             variant="control"
             icon="🎁"
@@ -267,7 +267,7 @@ export function MapScreen() {
         <Counter graphic={<Heart />}>4</Counter>
       </FloatChrome>
       <BottomStack>
-        <Dock tone="stone" density="map">
+        <Dock tone="stone" density="shallow">
           <SettingsRow
             variant="control"
             icon={<LevelBadge level="9" label="LVL" aria-label="Level nine" />}
@@ -311,7 +311,7 @@ export function ShopScreen() {
             divided={false}
             label={
               <>
-                <GroupKicker variant="quest">Royal Bundle</GroupKicker>
+                <GroupKicker variant="compact">Royal Bundle</GroupKicker>
                 <ScreenName as="h2">King&apos;s Coffer</ScreenName>
               </>
             }
@@ -366,7 +366,7 @@ export function ShopScreen() {
         </Panel>
       </Body>
       <BottomStack>
-        <Dock tone="primary" density="offer">
+        <Dock tone="primary" density="tight">
           <ShopRow
             art="🎬"
             title="Free coins"
@@ -647,7 +647,7 @@ export function SettingsScreen() {
               SUPPORT
             </Button>
           </Counters>
-          <Version>royal-games-ui · v1.0.6</Version>
+          <Version>royal-games-ui · v1.1.0</Version>
         </Dock>
         <RoyalTabs initial="more" />
       </BottomStack>
