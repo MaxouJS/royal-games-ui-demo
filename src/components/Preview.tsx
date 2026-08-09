@@ -4,7 +4,7 @@ import {
   SkinProvider,
   useEntranceMotion,
 } from "@objectifthunes/royal-games-ui";
-import type { CSSProperties, ReactNode } from "react";
+import { Fragment, useEffect, type CSSProperties, type ReactNode } from "react";
 import { useDocsSkin } from "./DocsShell";
 
 export interface PreviewProps {
@@ -21,10 +21,17 @@ export interface PreviewProps {
  * the entrance choreography when scrolled into view (▶ MOTION replays it).
  */
 export function Preview({ col, center, style, children }: PreviewProps) {
-  const { skin } = useDocsSkin();
-  const { ref, playing } = useEntranceMotion<HTMLDivElement>({
+  const { skin, motionCycle } = useDocsSkin();
+  const { ref, playing, replay } = useEntranceMotion<HTMLDivElement>({
     threshold: 0.25,
   });
+
+  useEffect(() => {
+    if (motionCycle > 0) {
+      replay();
+    }
+  }, [motionCycle, replay]);
+
   return (
     <div className="preview">
       <SkinProvider skin={skin}>
@@ -48,12 +55,12 @@ export function PhoneFrame({
   size?: "sm" | "md" | "lg";
   children?: ReactNode;
 }) {
-  const { skin } = useDocsSkin();
+  const { skin, motionCycle } = useDocsSkin();
   return (
     <div className={size === "md" ? "phone" : `phone ${size}`}>
       <div className="phone-screen">
         <SkinProvider skin={skin} className="phone-skin">
-          {children}
+          <Fragment key={motionCycle}>{children}</Fragment>
         </SkinProvider>
         <div className="statusbar">
           <span>9:41</span>

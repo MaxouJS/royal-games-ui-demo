@@ -133,7 +133,7 @@ function RoyalTabs({ initial }: { initial: string }) {
 
 export function LobbyScreen() {
   return (
-    <Screen aria-label="Royal Games home" entrance={false}>
+    <Screen aria-label="Royal Games home">
       <RoyalChrome name="Home" />
       <Body>
         <Wordmark strap="His Majesty awaits">Royal Games</Wordmark>
@@ -198,7 +198,7 @@ export function LobbyScreen() {
 
 export function MapScreen() {
   return (
-    <Screen aria-label="World map" entrance={false}>
+    <Screen aria-label="World map">
       <MapScene aria-label="Emberfall route">
         <MapPin
           variant="static"
@@ -289,7 +289,7 @@ export function MapScreen() {
 
 export function ShopScreen() {
   return (
-    <Screen aria-label="Royal Shop" entrance={false}>
+    <Screen aria-label="Royal Shop">
       <Dock edge="top" tone="stone" density="compact">
         <SettingsRow
           variant="control"
@@ -386,7 +386,7 @@ export function ShopScreen() {
 
 export function VictoryScreen() {
   return (
-    <Screen aria-label="Victory results" entrance={false} tone="forest">
+    <Screen aria-label="Victory results" tone="forest">
       <Dim intensity="strong" />
       <Body layout="result">
         <Ribbon size="large">Victory!</Ribbon>
@@ -444,7 +444,7 @@ export function VictoryScreen() {
 
 export function RanksScreen() {
   return (
-    <Screen aria-label="Season leaderboard" entrance={false}>
+    <Screen aria-label="Season leaderboard">
       <Dock edge="top" tone="primary">
         <SettingsRow
           variant="control"
@@ -540,7 +540,7 @@ export function SettingsScreen() {
   const [notifications, setNotifications] = useState(true);
 
   return (
-    <Screen aria-label="Settings" entrance={false}>
+    <Screen aria-label="Settings">
       <Dock edge="top" tone="stone" flush>
         <SettingsRow
           variant="control"
@@ -647,7 +647,7 @@ export function SettingsScreen() {
               SUPPORT
             </Button>
           </Counters>
-          <Version>royal-games-ui · v1.0.5</Version>
+          <Version>royal-games-ui · v1.0.6</Version>
         </Dock>
         <RoyalTabs initial="more" />
       </BottomStack>

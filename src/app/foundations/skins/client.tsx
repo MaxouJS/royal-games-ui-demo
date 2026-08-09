@@ -56,9 +56,15 @@ export function Motion() {
     <Stack>
       <div ref={ref} className={playing ? "rg-entering rg-play" : undefined}>
         <Row>
-          <Coin decorative={false} title="Coin" size="large" />
-          <Gem decorative={false} title="Gem" size="large" />
-          <Heart decorative={false} title="Heart" size="large" />
+          <span className="rg-entrance-item">
+            <Coin decorative={false} title="Coin" size="large" />
+          </span>
+          <span className="rg-entrance-item">
+            <Gem decorative={false} title="Gem" size="large" />
+          </span>
+          <span className="rg-entrance-item">
+            <Heart decorative={false} title="Heart" size="large" />
+          </span>
         </Row>
       </div>
       <Row>
