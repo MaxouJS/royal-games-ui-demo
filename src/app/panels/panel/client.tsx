@@ -1,20 +1,21 @@
 "use client";
 
 import { Panel, GroupKicker, Meter, Button } from "@objectifthunes/royal-games-ui";
+import { Stack } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <div style={{ display: "flex", gap: 14, flexWrap: "wrap", width: "100%", maxWidth: 560 }}>
-      <Panel tone="paper" style={{ flex: 1, minWidth: 240 }}>
+    <Stack>
+      <Panel tone="paper">
         <GroupKicker>Chapter 3</GroupKicker>
-        <div style={{ font: "800 22px/1.1 var(--rg-font-display)", margin: "4px 0 10px" }}>The East Gate</div>
+        <div className="stage-title">The East Gate</div>
         <Meter tone="gold" value={0.6} label="PROGRESS" valueLabel="12 / 20" />
-        <div style={{ marginTop: 14 }}><Button tone="accent" block sheen>PLAY</Button></div>
+        <div className="stage-mt"><Button tone="accent" block sheen>PLAY</Button></div>
       </Panel>
-      <Panel tone="primary" style={{ flex: 1, minWidth: 200 }} faceStyle={{ display: "grid", placeItems: "center", gap: 8 }}>
-        <span style={{ fontSize: 30 }}>🎁</span>
-        <b style={{ font: "800 14px/1 var(--rg-font-display)" }}>Daily Gift</b>
+      <Panel tone="primary" faceStyle={{ display: "grid", placeItems: "center", gap: 8 }}>
+        <span className="stage-art">🎁</span>
+        <b className="stage-label">Daily Gift</b>
       </Panel>
-    </div>
+    </Stack>
   );
 }

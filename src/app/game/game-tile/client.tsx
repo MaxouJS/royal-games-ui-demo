@@ -2,6 +2,7 @@
 
 import { Board, GameTile, type TileColor } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
+import { Stack } from "@/components/Stage";
 
 export function Demo() {
   return (
@@ -18,12 +19,12 @@ const ROWS: TileColor[][] = [
 function DemoInner() {
   const [sel, setSel] = useState(8);
   return (
-    <div style={{ width: 300 }}>
+    <Stack>
       <Board columns={6} gap={5}>
         {ROWS.flat().map((c, i) => (
           <GameTile key={i} color={c} index={i} sel={i === sel} boom={i === 4} onClick={() => setSel(i)} />
         ))}
       </Board>
-    </div>
+    </Stack>
   );
 }

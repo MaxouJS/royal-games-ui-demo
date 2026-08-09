@@ -1,12 +1,13 @@
 "use client";
 
 import { Dim } from "@objectifthunes/royal-games-ui";
+import { Scene } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <div style={{ position: "relative", width: 280, height: 140, borderRadius: 14, overflow: "hidden", background: "linear-gradient(180deg,#2c5a35,#173a20)" }}>
+    <Scene field h={140}>
       <Dim />
-      <div style={{ position: "relative", zIndex: 3, display: "grid", placeItems: "center", height: "100%", font: "800 15px/1 var(--rg-font-display)", color: "#fff4dc" }}>Scrim over the game</div>
-    </div>
+      <div className="stage-center stage-label">Scrim over the game</div>
+    </Scene>
   );
 }

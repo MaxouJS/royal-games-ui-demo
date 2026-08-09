@@ -6,7 +6,7 @@ import { Demo } from "./client";
 
 const e = findExport("/scene/map-pin/")!;
 
-const CODE = "<MapPin stars={2} style={{ left: 70, top: 590 }}>8</MapPin>\n<MapPin state=\"current\" style={{ left: 150, top: 388 }}>9</MapPin>   {/* halo + bob */}\n<MapPin state=\"locked\" style={{ left: 120, top: 272 }}>10</MapPin>";
+const CODE = "<MapPin stars={2} style={{ left: u(70), top: u(590) }}>8</MapPin>\n<MapPin state=\"current\" style={{ left: u(150), top: u(388) }}>9</MapPin>   {/* halo + bob */}\n<MapPin state=\"locked\" style={{ left: u(120), top: u(272) }}>10</MapPin>";
 
 export default function Page() {
   return (

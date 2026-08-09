@@ -1,11 +1,12 @@
 "use client";
 
 import { Dock, TabBar, Tab, Button } from "@objectifthunes/royal-games-ui";
+import { Scene } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <div style={{ position: "relative", width: 320, height: 210, borderRadius: 16, overflow: "hidden", background: "#180e32" }}>
-      <div className="rg-bottom-stack" style={{ position: "absolute" }}>
+    <Scene h={210}>
+      <div className="rg-bottom-stack">
         <Dock edge="bottom" tone="stone">
           <Button tone="positive" size="sm" block>CLAIM</Button>
         </Dock>
@@ -15,6 +16,6 @@ export function Demo() {
           <Tab icon="⚑" label="Map" />
         </TabBar>
       </div>
-    </div>
+    </Scene>
   );
 }

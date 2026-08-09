@@ -32,10 +32,10 @@ export function Preview({ col, center, style, children }: PreviewProps) {
 }
 
 /** Bare phone frame with a status bar, hosts a package Screen composition. */
-export function PhoneFrame({ children }: { children?: ReactNode }) {
+export function PhoneFrame({ size = "md", children }: { size?: "sm" | "md" | "lg"; children?: ReactNode }) {
   const { skin } = useDocsSkin();
   return (
-    <div className="phone">
+    <div className={size === "md" ? "phone" : `phone ${size}`}>
       <div className="phone-screen">
         <SkinProvider skin={skin} className="phone-skin">
           {children}

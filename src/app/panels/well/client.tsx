@@ -1,11 +1,15 @@
 "use client";
 
 import { Well } from "@objectifthunes/royal-games-ui";
+import { Stack } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <Well style={{ color: "#fff4dc", font: "800 14px/1.2 var(--rg-font-display)", width: 300, display: "flex", justifyContent: "space-between" }}>
-      <span>SCORE</span><span>8,420</span>
-    </Well>
+    <Stack>
+      <Well className="stage-bar">
+        <b className="stage-label">SCORE</b>
+        <span className="stage-label">8,420</span>
+      </Well>
+    </Stack>
   );
 }

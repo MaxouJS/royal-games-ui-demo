@@ -6,7 +6,7 @@ import { Demo } from "./client";
 
 const e = findExport("/resources/star/")!;
 
-const CODE = "<Star /> <Star /> <Star off />\n<Star size={40} />";
+const CODE = "<Star /> <Star /> <Star off />\n<Star size=\"lg\" />";
 
 export default function Page() {
   return (

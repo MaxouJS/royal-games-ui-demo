@@ -11,5 +11,5 @@ export function Demo() {
 
 function DemoInner() {
   const [v, setV] = useState(0.62);
-  return <Slider value={v} onChange={setV} style={{ width: 220 }} />;
+  return <Slider value={v} onChange={setV} />;
 }
