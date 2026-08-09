@@ -6,15 +6,21 @@ import { Demo } from "./client";
 
 const e = findExport("/controls/checkbox/")!;
 
-const CODE = "<Checkbox checked={agreed} onToggle={toggle} />";
+const CODE =
+  '<Checkbox aria-label="Accept terms" checked={agreed} onChange={(event) => setAgreed(event.currentTarget.checked)} />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Recessed until checked, then gold enamel with the tick.</p>
+        <p>
+          A styled native checkbox: controlled through <code>checked</code> and
+          <code>onChange</code>, keyboard-operable, and explicitly named.
+        </p>
       </Notes>
     </ExportPage>
   );

@@ -11,10 +11,15 @@ const CODE = "<ProgressRing value={68}>68%</ProgressRing>";
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Conic gold ring driven by a CSS variable, cooldowns, capture timers, circular progress.</p>
+        <p>
+          Conic gold ring driven by a CSS variable, cooldowns, capture timers,
+          circular progress.
+        </p>
       </Notes>
     </ExportPage>
   );

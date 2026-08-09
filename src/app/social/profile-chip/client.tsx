@@ -4,6 +4,10 @@ import { ProfileChip, Avatar } from "@objectifthunes/royal-games-ui";
 
 export function Demo() {
   return (
-    <ProfileChip avatar={<Avatar size="sm">♛</Avatar>} name="Max" caption="LEVEL 12" />
+    <ProfileChip
+      avatar={<Avatar size="small">♛</Avatar>}
+      name="Max"
+      caption="LEVEL 12"
+    />
   );
 }

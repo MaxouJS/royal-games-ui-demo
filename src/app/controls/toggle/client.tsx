@@ -4,9 +4,7 @@ import { Toggle } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 
 export function Demo() {
-  return (
-    <DemoInner />
-  );
+  return <DemoInner />;
 }
 
 function DemoInner() {
@@ -14,8 +12,8 @@ function DemoInner() {
   const [b, setB] = useState(false);
   return (
     <>
-      <Toggle on={a} onToggle={() => setA(!a)} />
-      <Toggle on={b} onToggle={() => setB(!b)} />
+      <Toggle aria-label="Music" checked={a} onChange={() => setA(!a)} />
+      <Toggle aria-label="Haptics" checked={b} onChange={() => setB(!b)} />
     </>
   );
 }

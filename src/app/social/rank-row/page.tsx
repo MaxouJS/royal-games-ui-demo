@@ -6,15 +6,22 @@ import { Demo } from "./client";
 
 const e = findExport("/social/rank-row/")!;
 
-const CODE = "<RankRow pos={6} me\n  avatar={<Avatar size=\"sm\">\u265b</Avatar>}\n  name={<>Max <YouBadge /></>}\n  score={<><Coin size=\"sm\" />8,420</>}\n/>";
+const CODE =
+  '<RankRow position={6} current\n  avatar={<Avatar size="small">\u265b</Avatar>}\n  name="Max"\n  badge={<YouBadge>You</YouBadge>}\n  score={<><Coin size="small" />8,420</>}\n/>';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Leaderboard entry; <code>me</code> wears the gold contour and glow, and <code>YouBadge</code> marks the name.</p>
+        <p>
+          Stable host-provided slots for position, avatar, name, score, and
+          badge. <code>current</code> applies the local-player highlight without
+          sorting or formatting any host data.
+        </p>
       </Notes>
     </ExportPage>
   );

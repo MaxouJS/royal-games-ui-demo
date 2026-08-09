@@ -6,15 +6,22 @@ import { Demo } from "./client";
 
 const e = findExport("/scene/map-pin/")!;
 
-const CODE = "<MapPin stars={2} style={{ left: u(70), top: u(590) }}>8</MapPin>\n<MapPin state=\"current\" style={{ left: u(150), top: u(388) }}>9</MapPin>   {/* halo + bob */}\n<MapPin state=\"locked\" style={{ left: u(120), top: u(272) }}>10</MapPin>";
+const CODE =
+  '<MapPin variant="button" state="complete" stars={2} label="Replay level 8" onPress={replayLevel}>8</MapPin>\n<MapPin variant="button" state="current" label="Play level 9" onPress={playLevel}>9</MapPin>\n<MapPin variant="static" state="unavailable" label="Level 10 is unavailable">10</MapPin>';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Level markers over the painted world: done pins carry their stars, the current pin pulses its halo and bobs, locked pins go stone. Position absolutely via <code>style</code>; <code>index</code> staggers their spring-in.</p>
+        <p>
+          Level markers with explicit complete, current, and unavailable states.
+          Choose a button, link, or static variant so semantics match the
+          navigation behavior; the host still owns route placement and progress.
+        </p>
       </Notes>
     </ExportPage>
   );

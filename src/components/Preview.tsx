@@ -1,6 +1,9 @@
 "use client";
 
-import { SkinProvider, usePlayOnView } from "@objectifthunes/royal-games-ui";
+import {
+  SkinProvider,
+  useEntranceMotion,
+} from "@objectifthunes/royal-games-ui";
 import type { CSSProperties, ReactNode } from "react";
 import { useDocsSkin } from "./DocsShell";
 
@@ -19,11 +22,17 @@ export interface PreviewProps {
  */
 export function Preview({ col, center, style, children }: PreviewProps) {
   const { skin } = useDocsSkin();
-  const { ref } = usePlayOnView<HTMLDivElement>(0.25);
+  const { ref, playing } = useEntranceMotion<HTMLDivElement>({
+    threshold: 0.25,
+  });
   return (
     <div className="preview">
       <SkinProvider skin={skin}>
-        <div ref={ref} className={`preview-inner${col ? " col" : ""}${center ? " center" : ""}`} style={style}>
+        <div
+          ref={ref}
+          className={`preview-inner${col ? " col" : ""}${center ? " center" : ""}${playing ? " rg-entering rg-play" : ""}`}
+          style={style}
+        >
           {children}
         </div>
       </SkinProvider>
@@ -32,7 +41,13 @@ export function Preview({ col, center, style, children }: PreviewProps) {
 }
 
 /** Bare phone frame with a status bar, hosts a package Screen composition. */
-export function PhoneFrame({ size = "md", children }: { size?: "sm" | "md" | "lg"; children?: ReactNode }) {
+export function PhoneFrame({
+  size = "md",
+  children,
+}: {
+  size?: "sm" | "md" | "lg";
+  children?: ReactNode;
+}) {
   const { skin } = useDocsSkin();
   return (
     <div className={size === "md" ? "phone" : `phone ${size}`}>

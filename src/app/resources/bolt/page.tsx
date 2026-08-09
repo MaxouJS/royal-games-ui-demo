@@ -6,12 +6,14 @@ import { Demo } from "./client";
 
 const e = findExport("/resources/bolt/")!;
 
-const CODE = "<Counter icon={<Bolt />}>8/10</Counter>";
+const CODE = "<Counter graphic={<Bolt />}>8/10</Counter>";
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
         <p>Energy glyph for stamina counters and generator costs.</p>

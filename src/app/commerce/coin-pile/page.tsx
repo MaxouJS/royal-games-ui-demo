@@ -11,10 +11,15 @@ const CODE = "<ShopRow art={<CoinPile coins={3} />} \u2026 />";
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>One, two or three overlapping coins for tiered shop art, sized for the ShopRow art slot.</p>
+        <p>
+          One, two or three overlapping coins for tiered shop art, sized for the
+          ShopRow art slot.
+        </p>
       </Notes>
     </ExportPage>
   );

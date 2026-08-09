@@ -6,15 +6,21 @@ import { Demo } from "./client";
 
 const e = findExport("/controls/toggle/")!;
 
-const CODE = "<Toggle on={music} onToggle={toggleMusic} />";
+const CODE =
+  '<Toggle aria-label="Music" checked={music} onChange={(event) => setMusic(event.currentTarget.checked)} />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Enamel switch: emerald track and gold knob when on. Fully controlled.</p>
+        <p>
+          A native checkbox presented as a switch. State remains fully
+          controlled through standard input props.
+        </p>
       </Notes>
     </ExportPage>
   );

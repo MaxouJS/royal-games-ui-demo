@@ -4,8 +4,16 @@ import "./globals.css";
 import { DocsShell, DocsHeader } from "@/components/DocsShell";
 import { Sidebar } from "@/components/Sidebar";
 
-const display = Baloo_2({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display" });
-const body = Nunito({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-body" });
+const display = Baloo_2({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
+});
+const body = Nunito({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   title: "royal-games-ui · Midnight Court UI kit",
@@ -13,7 +21,11 @@ export const metadata: Metadata = {
     "Royal enamel UI kit for Capacitor mobile games. Two skins, one grammar: docks, ribbons, boards, pieces and HUD.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>

@@ -1,17 +1,32 @@
 "use client";
 
-import { Button, Ribbon, Counter, Coin, Toggle, SkinProvider, Board, GameTile, usePlayOnView, type TileColor } from "@objectifthunes/royal-games-ui";
+import {
+  Button,
+  Coin,
+  Counter,
+  Gem,
+  Heart,
+  Ribbon,
+  SkinProvider,
+  Toggle,
+  useEntranceMotion,
+} from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 import { Row, Stack } from "@/components/Stage";
 
 export function Demo() {
-  const [on, setOn] = useState(true);
+  const [sound, setSound] = useState(true);
+
   return (
     <>
       <Ribbon>Chapter complete</Ribbon>
-      <Button tone="accent">PLAY</Button>
-      <Counter icon={<Coin />}>2,450</Counter>
-      <Toggle on={on} onToggle={() => setOn(!on)} />
+      <Button tone="accent">Play</Button>
+      <Counter graphic={<Coin />}>2,450</Counter>
+      <Toggle
+        aria-label="Sound effects"
+        checked={sound}
+        onChange={(event) => setSound(event.currentTarget.checked)}
+      />
     </>
   );
 }
@@ -22,9 +37,11 @@ export function SideBySide() {
       {(["enamel", "gloss"] as const).map((skin) => (
         <SkinProvider key={skin} skin={skin}>
           <div className="stage-duo">
-            <Button tone="accent">PLAY</Button>
-            <Button tone="gold" size="sm">BUY</Button>
-            <Counter icon={<Coin />}>2,450</Counter>
+            <Button tone="accent">Play</Button>
+            <Button tone="gold" size="small">
+              Buy
+            </Button>
+            <Counter graphic={<Coin />}>2,450</Counter>
           </div>
         </SkinProvider>
       ))}
@@ -32,24 +49,23 @@ export function SideBySide() {
   );
 }
 
-const GRID: TileColor[] = [
-  "purple", "green", "blue", "red", "gold", "green",
-  "blue", "gold", "purple", "green", "red", "purple",
-  "red", "blue", "gold", "purple", "green", "blue",
-];
-
 export function Motion() {
-  const { ref, replay } = usePlayOnView<HTMLDivElement>();
+  const { ref, playing, replay } = useEntranceMotion<HTMLDivElement>();
+
   return (
     <Stack>
-      <div ref={ref}>
-        <Board columns={6} gap={5}>
-          {GRID.map((color, i) => (
-            <GameTile key={i} color={color} index={i} />
-          ))}
-        </Board>
+      <div ref={ref} className={playing ? "rg-entering rg-play" : undefined}>
+        <Row>
+          <Coin decorative={false} title="Coin" size="large" />
+          <Gem decorative={false} title="Gem" size="large" />
+          <Heart decorative={false} title="Heart" size="large" />
+        </Row>
       </div>
-      <Row><Button tone="gold" size="sm" onClick={replay}>↻ REPLAY ENTRANCE</Button></Row>
+      <Row>
+        <Button tone="gold" size="small" onClick={replay}>
+          Replay entrance
+        </Button>
+      </Row>
     </Stack>
   );
 }

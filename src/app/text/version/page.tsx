@@ -6,12 +6,14 @@ import { Demo } from "./client";
 
 const e = findExport("/text/version/")!;
 
-const CODE = "<Version>royal-games-ui \u00b7 v0.1.2</Version>";
+const CODE = "<Version>royal-games-ui \u00b7 v1.0.0</Version>";
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
         <p>Muted build footnote for settings footers.</p>

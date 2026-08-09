@@ -5,9 +5,9 @@ import { Avatar } from "@objectifthunes/royal-games-ui";
 export function Demo() {
   return (
     <>
-      <Avatar size="sm">🦊</Avatar>
+      <Avatar size="small">🦊</Avatar>
       <Avatar>♛</Avatar>
-      <Avatar size="lg">🐻</Avatar>
+      <Avatar size="large">🐻</Avatar>
     </>
   );
 }

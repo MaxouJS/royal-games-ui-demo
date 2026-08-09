@@ -6,15 +6,22 @@ import { Demo } from "./client";
 
 const e = findExport("/social/settings-row/")!;
 
-const CODE = "<SettingsRow icon=\"\u266a\" label=\"Music\" control={<Toggle on={music} onToggle={toggle} />} />\n<SettingsRow icon=\"\ud83c\udf10\ufe0e\" label=\"Language\" value=\"English\" chevron />";
+const CODE =
+  '<SettingsRow variant="control" icon="\u266a" label="Music" control={<Toggle aria-label="Music" checked={music} onChange={changeMusic} />} />\n<SettingsRow variant="action" icon="\ud83c\udf10\ufe0e" label="Language" caption="English" onPress={openLanguage} />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>One row, two endings: a value + chevron for navigation, or any trailing control. Group them under kickers in parchment panels.</p>
+        <p>
+          A discriminated row whose root is static, a native button, a link, or
+          a non-interactive wrapper around a control. The API prevents nested
+          interactive elements.
+        </p>
       </Notes>
     </ExportPage>
   );

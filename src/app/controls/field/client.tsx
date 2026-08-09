@@ -4,6 +4,11 @@ import { Field } from "@objectifthunes/royal-games-ui";
 
 export function Demo() {
   return (
-    <Field icon="♛" placeholder="Kingdom name…" defaultValue="Camelot" fieldStyle={{ width: 260 }} />
+    <Field
+      label="Kingdom name"
+      leadingGraphic="♛"
+      placeholder="Kingdom name…"
+      defaultValue="Camelot"
+    />
   );
 }

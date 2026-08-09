@@ -11,10 +11,15 @@ const CODE = "<Toast><Coin />+120 coins collected!</Toast>";
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Framed announcement pill for rewards and saves. Enters with a rise inside any playing scope.</p>
+        <p>
+          Framed announcement pill for rewards and saves. Enters with a rise
+          inside any playing scope.
+        </p>
       </Notes>
     </ExportPage>
   );

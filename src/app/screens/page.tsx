@@ -10,16 +10,18 @@ export default function Page() {
       <AllScreens />
       <Notes>
         <p>
-          Every phone is live: scroll and each screen plays its entrance, tabs switch, tiles select,
-          forms work. Open a screen&apos;s own page from the sidebar for its source.
+          Every phone is live: tabs switch, form controls work, and actions
+          retain native browser behavior. Open a screen&apos;s own page from the
+          sidebar for its source.
         </p>
       </Notes>
       <Section>One object, any device</Section>
       <DeviceRange />
       <Notes>
         <p>
-          Every dimension in the kit is a multiple of one screen-relative unit, so the same
-          screen renders proportionally on any device width. No breakpoints, no overflow.
+          Screen geometry scales from the reference container, caps at the
+          reviewed large-screen size, and uses the shorter axis in landscape to
+          prevent oversized or colliding controls.
         </p>
       </Notes>
     </ExportPage>

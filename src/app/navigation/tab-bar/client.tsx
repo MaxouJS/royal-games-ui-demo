@@ -5,13 +5,11 @@ import { useState } from "react";
 import { Scene } from "@/components/Stage";
 
 export function Demo() {
-  return (
-    <DemoInner />
-  );
+  return <DemoInner />;
 }
 
 function DemoInner() {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState("home");
   const tabs = [
     { icon: "🛒", label: "Shop" },
     { icon: "♛", label: "Ranks" },
@@ -21,9 +19,20 @@ function DemoInner() {
   ];
   return (
     <Scene h={96}>
-      <TabBar>
-        {tabs.map((t, i) => (
-          <Tab key={t.label} icon={t.icon} label={t.label} dot={t.dot} active={i === active} onClick={() => setActive(i)} />
+      <TabBar
+        aria-label="Primary navigation"
+        value={active}
+        onValueChange={setActive}
+      >
+        {tabs.map((tab) => (
+          <Tab
+            key={tab.label}
+            value={tab.label.toLowerCase()}
+            icon={tab.icon}
+            dot={tab.dot}
+          >
+            {tab.label}
+          </Tab>
         ))}
       </TabBar>
     </Scene>

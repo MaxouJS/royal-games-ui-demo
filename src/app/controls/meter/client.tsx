@@ -6,9 +6,20 @@ import { Stack } from "@/components/Stage";
 export function Demo() {
   return (
     <Stack>
-      <Meter value={0.68} label="LEVEL 12" valueLabel="68%" />
-      <Meter tone="gold" value={0.6} label="GOLD RUSH" valueLabel="12/20" />
-      <Meter tone="accent" value={0.35} label="⏳ HURRY!" valueLabel="0:45" />
+      <Meter value={68} label="Level 12" valueText="68 percent" />
+      <Meter
+        tone="gold"
+        value={12}
+        max={20}
+        label="Gold rush"
+        valueText="12 of 20"
+      />
+      <Meter
+        tone="accent"
+        value={35}
+        label="Time remaining"
+        valueText="45 seconds"
+      />
     </Stack>
   );
 }

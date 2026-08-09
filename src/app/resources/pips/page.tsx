@@ -6,15 +6,21 @@ import { Demo } from "./client";
 
 const e = findExport("/resources/pips/")!;
 
-const CODE = "<Pips level={2} />          {/* \u25cf\u25cf\u25cb */}\n<Pips level={4} max={5} />";
+const CODE =
+  '<Pips value={2} total={3} label="Two of three upgrades" />\n<Pips value={4} total={5} label="Four of five upgrades" />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Gold level pips with their dark rings. MergeItem renders them for you; standalone they mark upgrade tiers anywhere.</p>
+        <p>
+          Labelled, bounded progress pips. The host owns both the current value
+          and total, so the component never infers upgrade rules.
+        </p>
       </Notes>
     </ExportPage>
   );

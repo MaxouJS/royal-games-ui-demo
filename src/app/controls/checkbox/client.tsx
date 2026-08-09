@@ -4,17 +4,23 @@ import { Checkbox } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 
 export function Demo() {
-  return (
-    <DemoInner />
-  );
+  return <DemoInner />;
 }
 
 function DemoInner() {
   const [c, setC] = useState(true);
   return (
     <>
-      <Checkbox checked={c} onToggle={() => setC(!c)} />
-      <Checkbox checked={!c} onToggle={() => setC(!c)} />
+      <Checkbox
+        aria-label="First option"
+        checked={c}
+        onChange={() => setC(!c)}
+      />
+      <Checkbox
+        aria-label="Second option"
+        checked={!c}
+        onChange={() => setC(!c)}
+      />
     </>
   );
 }

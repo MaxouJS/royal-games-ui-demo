@@ -6,15 +6,22 @@ import { Demo } from "./client";
 
 const e = findExport("/feedback/chest/")!;
 
-const CODE = "<Chest />        {/* idle */}\n<Chest glow />   {/* claimable */}";
+const CODE =
+  "<Chest decorative>\u265b</Chest>\n<Chest decorative glow>\u2726</Chest>   {/* host artwork in a claimable frame */}";
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Reward chest; <code>glow</code> pulses the gold halo that says “open me”.</p>
+        <p>
+          A frame for host-supplied chest artwork. Mark decorative art as such,
+          or provide <code>decorative={false}</code> and a title when the
+          graphic itself conveys information.
+        </p>
       </Notes>
     </ExportPage>
   );

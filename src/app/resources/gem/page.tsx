@@ -6,15 +6,20 @@ import { Demo } from "./client";
 
 const e = findExport("/resources/gem/")!;
 
-const CODE = "<Gem size=\"sm\" /> <Gem /> <Gem size=\"lg\" />";
+const CODE = '<Gem size="small" /> <Gem /> <Gem size="large" />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>CSS-drawn amethyst, clip-path cut with the contour in Enamel. The premium currency glyph.</p>
+        <p>
+          CSS-drawn amethyst, clip-path cut with the contour in Enamel. The
+          premium currency glyph.
+        </p>
       </Notes>
     </ExportPage>
   );

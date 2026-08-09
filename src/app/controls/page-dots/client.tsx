@@ -4,16 +4,17 @@ import { PageDots } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 
 export function Demo() {
-  return (
-    <DemoInner />
-  );
+  return <DemoInner />;
 }
 
 function DemoInner() {
   const [page, setPage] = useState(0);
   return (
-    <span style={{ cursor: "pointer" }} onClick={() => setPage((page + 1) % 4)}>
-      <PageDots count={4} index={page} />
-    </span>
+    <PageDots
+      count={4}
+      index={page}
+      onPageChange={setPage}
+      getPageLabel={(index) => `Open page ${index + 1}`}
+    />
   );
 }

@@ -6,15 +6,21 @@ import { Demo } from "./client";
 
 const e = findExport("/controls/slider/")!;
 
-const CODE = "<Slider value={volume} onChange={setVolume} />   {/* 0..1 */}";
+const CODE =
+  '<Slider aria-label="Effects volume" value={volume} onChange={(event) => setVolume(event.currentTarget.valueAsNumber)} />';
 
 export default function Page() {
   return (
     <ExportPage group={e.group} title={e.name} lede={e.lede}>
-      <Preview center><Demo /></Preview>
+      <Preview center>
+        <Demo />
+      </Preview>
       <Source code={CODE} />
       <Notes>
-        <p>Gold-knobbed volume slider. The pointer-capture drag lives in <code>useSliderDrag</code>, reusable for custom scrubbers.</p>
+        <p>
+          A themed native range input. Browser drag, keyboard steps, min/max,
+          form behavior, and change events remain intact.
+        </p>
       </Notes>
     </ExportPage>
   );

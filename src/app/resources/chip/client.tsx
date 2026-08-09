@@ -4,9 +4,7 @@ import { Chip } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
 
 export function Demo() {
-  return (
-    <DemoInner />
-  );
+  return <DemoInner />;
 }
 
 function DemoInner() {
@@ -14,9 +12,13 @@ function DemoInner() {
   return (
     <>
       {["Easy", "Normal", "Hard"].map((d, i) => (
-        <Chip key={d} on={pick === i} onClick={() => setPick(i)}>{d}</Chip>
+        <Chip key={d} pressed={pick === i} onPressedChange={() => setPick(i)}>
+          {d}
+        </Chip>
       ))}
-      <Chip on>✦ Boosted</Chip>
+      <Chip pressed onPressedChange={() => {}}>
+        ✦ Boosted
+      </Chip>
     </>
   );
 }

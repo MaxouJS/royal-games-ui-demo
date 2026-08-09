@@ -1,12 +1,13 @@
 "use client";
 
-import { Pips, MergeItem } from "@objectifthunes/royal-games-ui";
+import { Pips } from "@objectifthunes/royal-games-ui";
 
 export function Demo() {
   return (
     <>
-      <Pips level={1} /><Pips level={2} /><Pips level={3} />
-      <MergeItem solo level={2}>🕯️</MergeItem>
+      <Pips value={1} total={3} label="One of three steps" />
+      <Pips value={2} total={3} label="Two of three steps" />
+      <Pips value={3} total={3} label="Three of three steps" />
     </>
   );
 }

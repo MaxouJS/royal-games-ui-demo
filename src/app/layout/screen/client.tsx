@@ -6,7 +6,7 @@ import { Scene } from "@/components/Stage";
 export function Demo() {
   return (
     <Scene h={320}>
-      <Screen>
+      <Screen aria-label="Royal Games title screen">
         <Body style={{ justifyContent: "center", alignItems: "center" }}>
           <Wordmark>ROYAL GAMES</Wordmark>
         </Body>

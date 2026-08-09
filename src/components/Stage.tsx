@@ -13,7 +13,15 @@ export function Stack({ children }: { children?: ReactNode }) {
 }
 
 /** Centered wrapping band for glyphs, buttons and other inline pieces. */
-export function Row({ align, loose, children }: { align?: "top" | "end"; loose?: boolean; children?: ReactNode }) {
+export function Row({
+  align,
+  loose,
+  children,
+}: {
+  align?: "top" | "end";
+  loose?: boolean;
+  children?: ReactNode;
+}) {
   const cls = ["stage-row", align, loose && "loose"].filter(Boolean).join(" ");
   return <div className={cls}>{children}</div>;
 }
@@ -23,9 +31,20 @@ export function Row({ align, loose, children }: { align?: "top" | "end"; loose?:
  * float chrome, boards). `h` is the stage height, `field` swaps the
  * night sky for the merge-field green.
  */
-export function Scene({ h = 220, field = false, children }: { h?: number; field?: boolean; children?: ReactNode }) {
+export function Scene({
+  h = 220,
+  field = false,
+  children,
+}: {
+  h?: number;
+  field?: boolean;
+  children?: ReactNode;
+}) {
   return (
-    <div className={`stage-scene${field ? " field" : ""}`} style={{ height: h }}>
+    <div
+      className={`stage-scene${field ? " field" : ""}`}
+      style={{ height: h }}
+    >
       {children}
     </div>
   );
