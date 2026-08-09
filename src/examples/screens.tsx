@@ -138,7 +138,7 @@ export function LobbyScreen() {
       <Body>
         <Wordmark strap="His Majesty awaits">Royal Games</Wordmark>
         <Panel tone="paper">
-          <GroupKicker>Chapter 3</GroupKicker>
+          <GroupKicker variant="quest">Chapter 3</GroupKicker>
           <ScreenName as="h2">The East Gate</ScreenName>
           <Counters aria-label="Chapter objectives" layout="spread">
             <Counter density="objective" graphic="⚑">
@@ -155,7 +155,7 @@ export function LobbyScreen() {
             PLAY
           </Button>
         </Panel>
-        <Panel tone="primary" density="compact">
+        <Panel tone="primary">
           <SettingsRow
             variant="control"
             icon="👑"
@@ -290,7 +290,7 @@ export function MapScreen() {
 export function ShopScreen() {
   return (
     <Screen aria-label="Royal Shop" entrance={false}>
-      <Dock edge="top" tone="stone">
+      <Dock edge="top" tone="stone" density="compact">
         <SettingsRow
           variant="control"
           label={<Ribbon size="screen">Royal Shop</Ribbon>}
@@ -311,7 +311,7 @@ export function ShopScreen() {
             divided={false}
             label={
               <>
-                <GroupKicker>Royal Bundle</GroupKicker>
+                <GroupKicker variant="quest">Royal Bundle</GroupKicker>
                 <ScreenName as="h2">King&apos;s Coffer</ScreenName>
               </>
             }
@@ -329,7 +329,7 @@ export function ShopScreen() {
             <Strike>€19.99</Strike> €9.99 · BUY
           </Button>
         </Panel>
-        <Panel tone="primary" density="compact">
+        <Panel tone="primary">
           <GroupKicker>Gems</GroupKicker>
           <PackRow>
             <Pack
@@ -403,7 +403,7 @@ export function VictoryScreen() {
               control={<strong>8,420</strong>}
             />
           </Well>
-          <Counters aria-label="Rewards" layout="spread">
+          <Counters aria-label="Rewards" layout="center">
             <span>
               <Coin /> +120
             </span>
@@ -588,7 +588,7 @@ export function SettingsScreen() {
           />
           <SettingsRow
             variant="control"
-            icon="♬"
+            icon="🔔︎"
             label="Sounds"
             control={
               <Toggle
@@ -602,21 +602,21 @@ export function SettingsScreen() {
             variant="control"
             icon="♪"
             label="Volume"
-            control={<Slider aria-label="Volume" defaultValue={60} />}
+            control={<Slider aria-label="Volume" defaultValue={62} />}
           />
         </Panel>
         <Panel tone="paper">
           <GroupKicker>Game</GroupKicker>
           <SettingsRow
             variant="action"
-            icon="🌐"
+            icon="🌐︎"
             label="Language"
-            caption="English"
+            trailing="English"
             onPress={() => undefined}
           />
           <SettingsRow
             variant="control"
-            icon="🔔"
+            icon="🔔︎"
             label="Notifications"
             control={
               <Toggle
@@ -630,9 +630,9 @@ export function SettingsScreen() {
           />
           <SettingsRow
             variant="action"
-            icon="☁"
+            icon="☁︎"
             label="Cloud save"
-            caption="Synced ✓"
+            trailing="Synced ✓"
             onPress={() => undefined}
           />
         </Panel>
@@ -647,7 +647,7 @@ export function SettingsScreen() {
               SUPPORT
             </Button>
           </Counters>
-          <Version>royal-games-ui · v1.0.2</Version>
+          <Version>royal-games-ui · v1.0.5</Version>
         </Dock>
         <RoyalTabs initial="more" />
       </BottomStack>
