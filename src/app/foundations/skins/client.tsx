@@ -2,6 +2,7 @@
 
 import { Button, Ribbon, Counter, Coin, Toggle, SkinProvider, Board, GameTile, usePlayOnView, type TileColor } from "@objectifthunes/royal-games-ui";
 import { useState } from "react";
+import { Row, Stack } from "@/components/Stage";
 
 export function Demo() {
   const [on, setOn] = useState(true);
@@ -17,10 +18,10 @@ export function Demo() {
 
 export function SideBySide() {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 14, width: "100%" }}>
+    <div className="stage-duos">
       {(["enamel", "gloss"] as const).map((skin) => (
         <SkinProvider key={skin} skin={skin}>
-          <div style={{ flex: 1, minWidth: 260, display: "flex", gap: 12, alignItems: "center", justifyContent: "center", padding: 18, borderRadius: 14, background: "#180e32" }}>
+          <div className="stage-duo">
             <Button tone="accent">PLAY</Button>
             <Button tone="gold" size="sm">BUY</Button>
             <Counter icon={<Coin />}>2,450</Counter>
@@ -40,15 +41,15 @@ const GRID: TileColor[] = [
 export function Motion() {
   const { ref, replay } = usePlayOnView<HTMLDivElement>();
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center" }}>
-      <div ref={ref} style={{ width: 280 }}>
+    <Stack>
+      <div ref={ref}>
         <Board columns={6} gap={5}>
           {GRID.map((color, i) => (
             <GameTile key={i} color={color} index={i} />
           ))}
         </Board>
       </div>
-      <Button tone="gold" size="sm" onClick={replay}>↻ REPLAY ENTRANCE</Button>
-    </div>
+      <Row><Button tone="gold" size="sm" onClick={replay}>↻ REPLAY ENTRANCE</Button></Row>
+    </Stack>
   );
 }

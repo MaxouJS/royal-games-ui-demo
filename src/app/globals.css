@@ -110,19 +110,68 @@ h2.section {
 .preview-inner.center { justify-content: center; }
 .preview-inner.col { flex-direction: column; align-items: stretch; }
 
-/* phone frame for screen examples */
+/* phone frame for screen examples: fluid, keeps the 352:760 shape.
+   Every dimension inside rides the frame width, so sm/md/lg frames
+   show the kit scaling as one object. */
 .phone {
-  width: 352px; height: 760px; border-radius: 44px; padding: 10px;
-  background: #06040d; margin: 0 auto; flex: 0 0 auto;
+  width: var(--phone-w, 352px); max-width: 100%; aspect-ratio: 352 / 760;
+  border-radius: calc(var(--phone-w, 352px) * 0.125); padding: calc(var(--phone-w, 352px) * 0.0284);
+  background: #06040d; margin: 0 auto; flex: 0 0 auto; container-type: inline-size;
   box-shadow: 0 24px 60px rgb(0 0 0 / 55%), inset 0 0 0 2px #2b2440;
 }
-.phone-screen { position: relative; width: 100%; height: 100%; border-radius: 35px; overflow: hidden; }
-.phone-screen [data-rg-skin], .phone-skin, .phone-skin > .rg-screen { width: 100%; height: 100%; }
+.phone.sm { --phone-w: 300px; }
+.phone.lg { --phone-w: 430px; }
+.phone-screen { position: relative; width: 100%; height: 100%; border-radius: calc(100cqw * 0.1); overflow: hidden; }
+.phone-screen [data-rg-skin], .phone-skin, .phone-skin > .rg-screen-fit { width: 100%; height: 100%; }
 .statusbar {
   position: absolute; top: 0; left: 0; right: 0; z-index: 9;
-  display: flex; justify-content: space-between; padding: 10px 22px 2px;
-  font-size: 12px; font-weight: 800; color: rgb(255 244 220 / 85%); pointer-events: none;
+  display: flex; justify-content: space-between; padding: calc(100cqw / 332 * 10) calc(100cqw / 332 * 22) 0;
+  font-size: calc(100cqw / 332 * 12); font-weight: 800; color: rgb(255 244 220 / 85%); pointer-events: none;
 }
+
+/* demo stages: one lane system, no ad-hoc widths */
+.stage-stack {
+  position: relative; width: 332px; max-width: 100%;
+  display: flex; flex-direction: column; gap: 14px;
+  color: var(--rg-color-ivory);
+}
+.stage-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; max-width: 100%; }
+.stage-row.top { align-items: flex-start; }
+.stage-row.end { align-items: flex-end; }
+.stage-row.loose { gap: 34px; }
+.stage-scene {
+  position: relative; width: 332px; max-width: 100%;
+  border-radius: 16px; overflow: hidden;
+  background: linear-gradient(180deg, #241448, #180e32);
+  color: var(--rg-color-ivory);
+}
+.stage-scene.field { background: linear-gradient(180deg, #2c5a35, #173a20); }
+.stage-cap {
+  font-family: var(--font-body); font-weight: 700; font-size: 13px; line-height: 1.5;
+  color: var(--ink-soft); margin: 0; text-align: center; max-width: 420px;
+}
+
+/* in-game text stand-ins and slots used by the demos */
+.stage-title { font: 800 20px/1.1 var(--rg-font-display); margin: 4px 0 10px; }
+.stage-label { font: 800 14px/1 var(--rg-font-display); }
+.stage-label.center { text-align: center; padding: 4px 0; }
+.stage-art { font-size: 28px; line-height: 1.2; display: block; text-align: center; }
+.stage-bar { display: flex; align-items: center; gap: 12px; }
+.stage-bar > b { flex: 1; }
+.stage-slot { position: relative; width: 52px; height: 44px; display: inline-block; }
+.stage-center { position: relative; z-index: 3; display: grid; place-items: center; height: 100%; }
+.stage-overlap { text-align: center; margin-bottom: -14px; position: relative; z-index: 2; }
+.stage-duos { display: flex; flex-wrap: wrap; gap: 14px; width: 100%; }
+.stage-duo {
+  flex: 1 1 260px; display: flex; gap: 12px; align-items: center; justify-content: center;
+  padding: 18px; border-radius: 14px; background: #180e32; color: var(--rg-color-ivory);
+}
+.stage-mt { margin-top: 14px; }
+
+/* scene hosting for components that position themselves on a screen */
+.stage-scene .rg-bottom-stack { position: absolute; }
+.stage-scene > .rg-tabbar { position: absolute; bottom: 0; left: 0; right: 0; }
+.stage-row .rg-pin { position: static; translate: none; }
 
 /* code + notes */
 .source { border: 1px solid var(--line); border-radius: 14px; overflow: auto; margin: 0 0 14px; }

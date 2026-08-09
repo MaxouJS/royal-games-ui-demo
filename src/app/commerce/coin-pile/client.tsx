@@ -1,13 +1,14 @@
 "use client";
 
-import { ShopRow, CoinPile } from "@objectifthunes/royal-games-ui";
+import { CoinPile } from "@objectifthunes/royal-games-ui";
+import { Row } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <div style={{ display: "flex", gap: 40 }}>
-      <span style={{ position: "relative", width: 52, height: 44, display: "inline-block" }}><CoinPile coins={1} /></span>
-      <span style={{ position: "relative", width: 52, height: 44, display: "inline-block" }}><CoinPile coins={2} /></span>
-      <span style={{ position: "relative", width: 52, height: 44, display: "inline-block" }}><CoinPile coins={3} /></span>
-    </div>
+    <Row loose>
+      <span className="stage-slot"><CoinPile coins={1} /></span>
+      <span className="stage-slot"><CoinPile coins={2} /></span>
+      <span className="stage-slot"><CoinPile coins={3} /></span>
+    </Row>
   );
 }

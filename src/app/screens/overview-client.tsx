@@ -35,3 +35,21 @@ export function AllScreens() {
     </div>
   );
 }
+
+/** The same screen on three device sizes: the kit scales as one object. */
+export function DeviceRange() {
+  return (
+    <div className="preview">
+      <div className="preview-inner center" style={{ padding: "36px 16px" }}>
+        <div className="screens-grid">
+          {(["sm", "md", "lg"] as const).map((size) => (
+            <figure key={size}>
+              <PhoneFrame size={size}><LobbyScreen /></PhoneFrame>
+              <figcaption>{{ sm: "300 × 649", md: "352 × 760", lg: "430 × 929" }[size]}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

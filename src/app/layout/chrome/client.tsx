@@ -1,10 +1,11 @@
 "use client";
 
 import { Chrome, ChromeRow, ScreenName, ProfileChip, Avatar, Counters, Counter, Coin, Button } from "@objectifthunes/royal-games-ui";
+import { Scene } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <div style={{ width: 340, borderRadius: 14, overflow: "hidden", background: "#180e32", paddingBottom: 14 }}>
+    <Scene h={124}>
       <Chrome>
         <ChromeRow tone="velvet">
           <ProfileChip avatar={<Avatar size="sm">♛</Avatar>} name="Max" caption="LEVEL 12" />
@@ -15,6 +16,6 @@ export function Demo() {
           <Button tone="primary" size="sm" icon>⚙</Button>
         </ChromeRow>
       </Chrome>
-    </div>
+    </Scene>
   );
 }

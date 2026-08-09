@@ -1,12 +1,13 @@
 "use client";
 
 import { Spinner } from "@objectifthunes/royal-games-ui";
+import { Row, Cap } from "@/components/Stage";
 
 export function Demo() {
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 14 }}>
+    <Row>
       <Spinner />
-      <span style={{ font: "800 13px/1 var(--rg-font-display)", color: "#bcb0de" }}>SUMMONING THE COURT…</span>
-    </span>
+      <Cap>SUMMONING THE COURT…</Cap>
+    </Row>
   );
 }
