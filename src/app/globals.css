@@ -142,10 +142,10 @@ h2.section {
 .stage-scene {
   position: relative; width: 332px; max-width: 100%;
   border-radius: 16px; overflow: hidden;
-  background: linear-gradient(180deg, #241448, #180e32);
+  background: linear-gradient(180deg, var(--rg-color-primary-dark), var(--rg-color-night));
   color: var(--rg-color-ivory);
 }
-.stage-scene.field { background: linear-gradient(180deg, #2c5a35, #173a20); }
+.stage-scene.field { background: linear-gradient(180deg, var(--rg-scene-grass), var(--rg-scene-grass-deep)); }
 .stage-cap {
   font-family: var(--font-body); font-weight: 700; font-size: 13px; line-height: 1.5;
   color: var(--ink-soft); margin: 0; text-align: center; max-width: 420px;
@@ -164,7 +164,7 @@ h2.section {
 .stage-duos { display: flex; flex-wrap: wrap; gap: 14px; width: 100%; }
 .stage-duo {
   flex: 1 1 260px; display: flex; gap: 12px; align-items: center; justify-content: center;
-  padding: 18px; border-radius: 14px; background: #180e32; color: var(--rg-color-ivory);
+  padding: 18px; border-radius: 14px; background: var(--rg-color-night); color: var(--rg-color-ivory);
 }
 .stage-mt { margin-top: 14px; }
 

@@ -33,7 +33,7 @@ function MainTabs({ active }: { active: number }) {
   );
 }
 
-const NIGHT = { background: "linear-gradient(180deg,#241448,#180e32 55%)" };
+const NIGHT = { background: "linear-gradient(180deg,var(--rg-color-primary-dark),var(--rg-color-night) 55%)" };
 
 export function LobbyScreen() {
   return (
@@ -100,7 +100,7 @@ const PINS: Array<{ left: string; top: string; label: string; state?: "current" 
 export function MapScreen() {
   return (
     <Screen>
-      <MapScene style={{ background: "linear-gradient(180deg,#241448 0%,#3a2071 42%,#2c5a35 42.2%,#1d4527 70%,#173a20 100%)" }}>
+      <MapScene style={{ background: "linear-gradient(180deg,var(--rg-color-primary-dark) 0%,var(--rg-color-primary) 42%,var(--rg-scene-grass) 42.2%,var(--rg-scene-grass-dark) 70%,var(--rg-scene-grass-deep) 100%)" }}>
         <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 352 740" preserveAspectRatio="none">
           <path d="M 70 590 C 220 550 300 510 260 445 C 220 380 80 400 90 310 C 100 230 250 240 260 170" fill="none" stroke="#c9a878" strokeWidth={26} strokeLinecap="round" opacity={0.9} />
           <path d="M 70 590 C 220 550 300 510 260 445 C 220 380 80 400 90 310 C 100 230 250 240 260 170" fill="none" stroke="#dcbd8d" strokeWidth={4} strokeDasharray="2 16" strokeLinecap="round" />
@@ -194,7 +194,7 @@ export function ShopScreen() {
 
 export function VictoryScreen() {
   return (
-    <Screen style={{ background: "linear-gradient(180deg,#2c5a35,#173a20)" }}>
+    <Screen style={{ background: "linear-gradient(180deg,var(--rg-scene-grass),var(--rg-scene-grass-deep))" }}>
       <div style={{ height: u(30) }} />
       <Dim />
       <ResultAnchor>
@@ -210,7 +210,7 @@ export function VictoryScreen() {
           <div style={{ display: "flex", justifyContent: "center", gap: u(16), margin: `${u(10)} 0`, fontWeight: 800, fontSize: u(15), lineHeight: "1", fontFamily: "var(--rg-font-display)" }}>
             <span style={{ display: "inline-flex", gap: u(6), alignItems: "center" }}><Coin />+120</span>
             <span style={{ display: "inline-flex", gap: u(6), alignItems: "center" }}><Gem />+2</span>
-            <span style={{ display: "inline-flex", gap: u(6), alignItems: "center" }}><span style={{ color: "#7e4fd8" }}>✦</span>+1 boost</span>
+            <span style={{ display: "inline-flex", gap: u(6), alignItems: "center" }}><span style={{ color: "var(--rg-color-gem)" }}>✦</span>+1 boost</span>
           </div>
           <Meter value={0.68} label="LEVEL 12" valueLabel="68%" style={{ color: "#4a3105" }} />
         </Panel>
@@ -320,7 +320,7 @@ const MERGE_CELLS: Array<{ e?: string; l?: number; gen?: boolean; lock?: boolean
 
 export function MergeScreen() {
   return (
-    <Screen style={{ background: "linear-gradient(180deg,#241448,#180e32 60%)" }}>
+    <Screen style={{ background: "linear-gradient(180deg,var(--rg-color-primary-dark),var(--rg-color-night) 60%)" }}>
       <div style={{ height: u(30) }} />
       <Dock edge="top" tone="velvet">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: u(8), marginBottom: u(8) }}>
@@ -366,7 +366,7 @@ const M3_COLOR: Record<string, TileColor> = { r: "red", b: "blue", g: "green", y
 export function Match3Screen() {
   const [sel, setSel] = useState(16);
   return (
-    <Screen style={{ background: "linear-gradient(180deg,#241448,#180e32 60%)" }}>
+    <Screen style={{ background: "linear-gradient(180deg,var(--rg-color-primary-dark),var(--rg-color-night) 60%)" }}>
       <div style={{ height: u(30) }} />
       <Dock edge="top" tone="velvet">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: u(8), marginBottom: u(8) }}>
@@ -406,7 +406,7 @@ const WORD_ROWS: Array<Array<[string, "fill" | "near" | "ok" | "empty"]>> = [
 
 export function WordScreen() {
   return (
-    <Screen style={{ background: "linear-gradient(180deg,#241448,#180e32 60%)" }}>
+    <Screen style={{ background: "linear-gradient(180deg,var(--rg-color-primary-dark),var(--rg-color-night) 60%)" }}>
       <div style={{ height: u(30) }} />
       <Dock edge="top" tone="stone" faceStyle={{ paddingBottom: u(14) }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: u(8) }}>
@@ -421,7 +421,7 @@ export function WordScreen() {
           <ObjectiveChip icon={<Star size="sm" />}>Best 12</ObjectiveChip>
           <TimerPill>⏳ <b>14h left</b></TimerPill>
         </div>
-        <div style={{ background: "linear-gradient(180deg,#2a1752,#1a0f38)", borderRadius: u(16), padding: `${u(14)} ${u(10)}`, display: "flex", flexDirection: "column", gap: u(8), border: `${u(2)} solid #4a2b06`, boxShadow: `inset 0 0 0 ${u(3)} #f0b93c` }}>
+        <div style={{ background: "linear-gradient(180deg,var(--rg-board-card-light),var(--rg-board-card-dark))", borderRadius: u(16), padding: `${u(14)} ${u(10)}`, display: "flex", flexDirection: "column", gap: u(8), border: `${u(2)} solid var(--rg-color-outline)`, boxShadow: `inset 0 0 0 ${u(3)} var(--rg-color-gold)` }}>
           <GroupKicker style={{ textAlign: "center", color: "#8b80b4" }}>Guess the royal word</GroupKicker>
           {WORD_ROWS.map((row, r) => (
             <LetterRow key={r} row={r}>
