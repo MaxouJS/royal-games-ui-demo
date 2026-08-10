@@ -325,7 +325,7 @@ export function ShopScreen() {
             </BundleCell>
             <BundleCell label="5 boosts">✦</BundleCell>
           </BundleCells>
-          <Button tone="gold">
+          <Button tone="gold" width="extended">
             <Strike>€19.99</Strike> €9.99 · BUY
           </Button>
         </Panel>
@@ -425,14 +425,14 @@ export function VictoryScreen() {
       </Body>
       <BottomStack>
         <Dock tone="primary">
-          <Button tone="positive" size="hero">
+          <Button tone="positive" size="hero" width="wide">
             CONTINUE
           </Button>
           <Counters aria-label="Result actions" layout="spread">
-            <Button tone="primary" size="small" block>
+            <Button tone="primary" size="small" width="full">
               ↻ REPLAY
             </Button>
-            <Button tone="primary" size="small" block>
+            <Button tone="primary" size="small" width="full">
               SHARE
             </Button>
           </Counters>
@@ -640,14 +640,14 @@ export function SettingsScreen() {
       <BottomStack>
         <Dock tone="stone" density="compact">
           <Counters aria-label="Settings support actions" layout="spread">
-            <Button tone="paper" size="small" block>
+            <Button tone="paper" size="small" width="full">
               RESTORE
             </Button>
-            <Button tone="primary" size="small" block>
+            <Button tone="primary" size="small" width="full">
               SUPPORT
             </Button>
           </Counters>
-          <Version>royal-games-ui · v1.1.0</Version>
+          <Version>royal-games-ui · v1.2.0</Version>
         </Dock>
         <RoyalTabs initial="more" />
       </BottomStack>

@@ -7,7 +7,7 @@ import { Demo } from "./client";
 const e = findExport("/text/strike/")!;
 
 const CODE =
-  '<Button tone="gold"><Strike>\u20ac19.99</Strike>\u20ac9.99 \u00b7 BUY</Button>';
+  '<Button tone="gold" width="extended"><Strike>\u20ac19.99</Strike>\u20ac9.99 \u00b7 BUY</Button>';
 
 export default function Page() {
   return (

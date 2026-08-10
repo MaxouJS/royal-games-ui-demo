@@ -15,7 +15,9 @@ export function Demo() {
         <Ribbon size="small">Best value</Ribbon>
       </TopRibbon>
       <Panel tone="paper">
-        <Button tone="gold">€9.99 · BUY</Button>
+        <Button tone="gold" width="wide">
+          €9.99 · BUY
+        </Button>
       </Panel>
     </Stack>
   );

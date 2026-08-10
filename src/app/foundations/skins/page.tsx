@@ -28,7 +28,7 @@ const { ref, playing, replay } = useEntranceMotion<HTMLDivElement>();
   <Coin decorative={false} title="Coin" size="large" />
   <Gem decorative={false} title="Gem" size="large" />
 </div>
-<Button onClick={replay}>Replay entrance</Button>`;
+<Button width="wide" onClick={replay}>Replay entrance</Button>`;
 
 export default function Page() {
   return (

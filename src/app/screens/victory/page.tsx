@@ -7,7 +7,7 @@ import { VictoryScreen } from "@/examples/screens";
 const e = findExport("/screens/victory/")!;
 
 const CODE =
-  '<Screen aria-label="Victory results">\n  <Dim />\n  <ResultAnchor>\n    <Ribbon size="large">Victory!</Ribbon>\n    <Panel tone="paper">\n      <StarBurst earned={3} total={3} label="Three out of three stars earned" />\n      <Well>SCORE \u00b7 8,420</Well>\n      <Meter value={68} max={100} label="LEVEL 12" valueText="68%" />\n    </Panel>\n  </ResultAnchor>\n  <BottomStack><Dock edge="bottom" tone="paper"><Button tone="positive" size="hero">Claim rewards</Button></Dock></BottomStack>\n</Screen>';
+  '<Screen aria-label="Victory results">\n  <Dim />\n  <ResultAnchor>\n    <Ribbon size="large">Victory!</Ribbon>\n    <Panel tone="paper">\n      <StarBurst earned={3} total={3} label="Three out of three stars earned" />\n      <Well>SCORE \u00b7 8,420</Well>\n      <Meter value={68} max={100} label="LEVEL 12" valueText="68%" />\n    </Panel>\n  </ResultAnchor>\n  <BottomStack><Dock edge="bottom" tone="paper"><Button tone="positive" size="hero" width="wide">Claim rewards</Button></Dock></BottomStack>\n</Screen>';
 
 export default function Page() {
   return (

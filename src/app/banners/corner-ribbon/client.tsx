@@ -16,7 +16,9 @@ export function Demo() {
       </CornerRibbon>
       <Panel tone="paper">
         <div className="stage-title">King&apos;s Coffer</div>
-        <Button tone="gold">€9.99 · BUY</Button>
+        <Button tone="gold" width="wide">
+          €9.99 · BUY
+        </Button>
       </Panel>
     </Stack>
   );

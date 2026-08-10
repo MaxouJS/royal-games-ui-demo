@@ -68,7 +68,7 @@ export function Motion() {
         </Row>
       </div>
       <Row>
-        <Button tone="gold" size="small" onClick={replay}>
+        <Button tone="gold" size="small" width="wide" onClick={replay}>
           Replay entrance
         </Button>
       </Row>

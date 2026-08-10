@@ -7,7 +7,7 @@ import { LobbyScreen } from "@/examples/screens";
 const e = findExport("/screens/lobby/")!;
 
 const CODE =
-  '<Screen aria-label="Moonlit Keep lobby">\n  <Chrome>{/* identity and resource rows */}</Chrome>\n  <Body>\n    <Wordmark strap="Tonight\'s challenge">Moonlit Keep</Wordmark>\n    <Panel tone="paper">{/* challenge and progress */}</Panel>\n    <Panel tone="primary">{/* daily reward */}</Panel>\n  </Body>\n  <BottomStack>\n    <Dock edge="bottom" tone="paper"><Button tone="accent">Continue</Button></Dock>\n    <TabBar aria-label="Primary" value={tab} onValueChange={setTab}>{tabs}</TabBar>\n  </BottomStack>\n</Screen>';
+  '<Screen aria-label="Moonlit Keep lobby">\n  <Chrome>{/* identity and resource rows */}</Chrome>\n  <Body>\n    <Wordmark strap="Tonight\'s challenge">Moonlit Keep</Wordmark>\n    <Panel tone="paper">{/* challenge and progress */}</Panel>\n    <Panel tone="primary">{/* daily reward */}</Panel>\n  </Body>\n  <BottomStack>\n    <Dock edge="bottom" tone="paper"><Button tone="accent" width="wide">Continue</Button></Dock>\n    <TabBar aria-label="Primary" value={tab} onValueChange={setTab}>{tabs}</TabBar>\n  </BottomStack>\n</Screen>';
 
 export default function Page() {
   return (

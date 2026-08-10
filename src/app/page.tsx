@@ -13,7 +13,7 @@ export function App() {
   return (
     <SkinProvider defaultSkin="enamel">
       <Ribbon size="large">Victory!</Ribbon>
-      <Button tone="positive" size="hero">CONTINUE</Button>
+      <Button tone="positive" size="hero" width="wide">CONTINUE</Button>
     </SkinProvider>
   );
 }`;
