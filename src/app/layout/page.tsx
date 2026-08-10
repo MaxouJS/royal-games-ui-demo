@@ -8,7 +8,7 @@ export default function Page() {
     <article>
       <span className="eyebrow">Section</span>
       <h1 className="page-title">{g.title}</h1>
-      <p className="lede">{g.lede} 5 components in this section.</p>
+      <p className="lede">{g.lede} 6 components in this section.</p>
       <div className="home-grid">
         {g.pages.map((p) => (
           <Link key={p.href} href={p.href} className="home-card">

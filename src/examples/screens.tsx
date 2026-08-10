@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ActionGroup,
   Avatar,
   Body,
   Bolt,
@@ -117,7 +118,7 @@ function RoyalChrome({
         />
         <ResourceCounters onAddCoins={onAddCoins} onAddGems={onAddGems} />
       </ChromeRow>
-      <ChromeRow tone="stone">
+      <ChromeRow tone="stone" density="compact" layout="balanced">
         <ScreenName>{name}</ScreenName>
         <Button
           tone="primary"
@@ -214,9 +215,11 @@ export function LobbyScreen({
               ⏳ <b>2d 4h</b>
             </TimerPill>
           </Counters>
-          <Button tone="accent" size="hero" onClick={onPlay}>
-            PLAY
-          </Button>
+          <ActionGroup align="center">
+            <Button tone="accent" size="hero" onClick={onPlay}>
+              PLAY
+            </Button>
+          </ActionGroup>
         </Panel>
         <Panel tone="primary">
           <SettingsRow
@@ -242,7 +245,7 @@ export function LobbyScreen({
             icon="🎁"
             label="Daily Gift ready"
             control={
-              <Counters aria-label="Daily gift actions">
+              <Counters aria-label="Daily gift actions" layout="inline">
                 <Button tone="positive" size="small" onClick={onClaimGift}>
                   CLAIM
                 </Button>
@@ -352,7 +355,14 @@ export function MapScreen({
         <Dock tone="stone" density="shallow">
           <SettingsRow
             variant="control"
-            icon={<LevelBadge level="9" label="LVL" aria-label="Level nine" />}
+            icon={
+              <LevelBadge
+                level="9"
+                label="LVL"
+                size="compact"
+                aria-label="Level nine"
+              />
+            }
             label="Castle Gates"
             caption="Beat it with 3 ★ to earn a chest"
             control={
@@ -548,17 +558,34 @@ export function VictoryScreen({
       </Body>
       <BottomStack>
         <Dock tone="primary">
-          <Button tone="positive" size="hero" width="wide" onClick={onContinue}>
-            CONTINUE
-          </Button>
-          <Counters aria-label="Result actions" layout="spread">
-            <Button tone="primary" size="small" width="full" onClick={onReplay}>
-              ↻ REPLAY
+          <ActionGroup layout="stack" align="stretch">
+            <Button
+              tone="positive"
+              size="hero"
+              width="full"
+              onClick={onContinue}
+            >
+              CONTINUE
             </Button>
-            <Button tone="primary" size="small" width="full" onClick={onShare}>
-              SHARE
-            </Button>
-          </Counters>
+            <ActionGroup equal>
+              <Button
+                tone="primary"
+                size="small"
+                width="full"
+                onClick={onReplay}
+              >
+                ↻ REPLAY
+              </Button>
+              <Button
+                tone="primary"
+                size="small"
+                width="full"
+                onClick={onShare}
+              >
+                SHARE
+              </Button>
+            </ActionGroup>
+          </ActionGroup>
         </Dock>
       </BottomStack>
     </Screen>
@@ -584,7 +611,7 @@ export function RanksScreen({
             </TimerPill>
           }
         />
-        <Podium aria-label="Top three players">
+        <Podium aria-label="Top three players" density="compact">
           <PodiumColumn
             place={2}
             avatar={<Avatar decorative>🦊</Avatar>}

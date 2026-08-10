@@ -165,6 +165,11 @@ export const GROUPS: DocGroup[] = [
         lede: "The scrolling content column.",
       },
       {
+        href: "/layout/action-group/",
+        name: "ActionGroup",
+        lede: "Stable horizontal and vertical action axes.",
+      },
+      {
         href: "/layout/bottom-stack/",
         name: "BottomStack",
         lede: "Welds docks and the tab bar to the bottom edge.",
