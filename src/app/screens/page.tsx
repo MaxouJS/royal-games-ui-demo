@@ -10,9 +10,11 @@ export default function Page() {
       <AllScreens />
       <Notes>
         <p>
-          Every phone is live: tabs switch, form controls work, and actions
-          retain native browser behavior. Open a screen&apos;s own page from the
-          sidebar for its source.
+          Every phone is a production-shaped React recipe: tabs switch, form
+          controls work, actions expose host callbacks, and each structural
+          region owns real layout space. Open a screen&apos;s page to copy the
+          exact component rendered in its preview—there are no omitted rows,
+          fake placeholders, or local screen CSS.
         </p>
       </Notes>
       <Section>One object, any device</Section>

@@ -2,12 +2,12 @@ import { ExportPage, Notes } from "@/components/ExportPage";
 import { PhonePreview } from "@/components/Preview";
 import { Source } from "@/components/Source";
 import { findExport } from "@/components/exports";
+import { readScreenSource } from "@/examples/readScreenSource";
 import { LobbyScreen } from "@/examples/screens";
 
 const e = findExport("/screens/lobby/")!;
 
-const CODE =
-  '<Screen aria-label="Moonlit Keep lobby">\n  <Chrome>{/* identity and resource rows */}</Chrome>\n  <Body>\n    <Wordmark strap="Tonight\'s challenge">Moonlit Keep</Wordmark>\n    <Panel tone="paper">{/* challenge and progress */}</Panel>\n    <Panel tone="primary">{/* daily reward */}</Panel>\n  </Body>\n  <BottomStack>\n    <Dock edge="bottom" tone="paper"><Button tone="accent" width="wide">Continue</Button></Dock>\n    <TabBar aria-label="Primary" value={tab} onValueChange={setTab}>{tabs}</TabBar>\n  </BottomStack>\n</Screen>';
+const CODE = readScreenSource("LobbyScreen");
 
 export default function Page() {
   return (
@@ -18,9 +18,10 @@ export default function Page() {
       <Source code={CODE} />
       <Notes>
         <p>
-          Composed entirely from package components, no local CSS. Scroll it
-          into view or hit ▶ MOTION to watch the entrance choreography;
-          everything tappable is live.
+          This is the exact component rendered above, including imports,
+          responsive placement, state, and interaction wiring. Copy it as a
+          starting screen and replace the example data and artwork with your
+          game&apos;s values.
         </p>
       </Notes>
     </ExportPage>

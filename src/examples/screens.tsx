@@ -52,23 +52,31 @@ import {
 } from "@objectifthunes/royal-games-ui";
 import { useState, type ReactNode } from "react";
 
-function ResourceCounters({ interactive = true }: { interactive?: boolean }) {
+const ignoreAction = () => undefined;
+
+interface ResourceCountersProps {
+  interactive?: boolean;
+  onAddCoins?: () => void;
+  onAddGems?: () => void;
+}
+
+interface NavigationProps {
+  onNavigate?: (value: string) => void;
+}
+
+function ResourceCounters({
+  interactive = true,
+  onAddCoins = ignoreAction,
+  onAddGems = ignoreAction,
+}: ResourceCountersProps) {
   return (
     <Counters aria-label="Player resources">
       {interactive ? (
         <>
-          <Counter
-            graphic={<Coin />}
-            onAdd={() => undefined}
-            addLabel="Add coins"
-          >
+          <Counter graphic={<Coin />} onAdd={onAddCoins} addLabel="Add coins">
             2,450
           </Counter>
-          <Counter
-            graphic={<Gem />}
-            onAdd={() => undefined}
-            addLabel="Add gems"
-          >
+          <Counter graphic={<Gem />} onAdd={onAddGems} addLabel="Add gems">
             12
           </Counter>
         </>
@@ -82,7 +90,19 @@ function ResourceCounters({ interactive = true }: { interactive?: boolean }) {
   );
 }
 
-function RoyalChrome({ name }: { name: ReactNode }) {
+interface RoyalChromeProps {
+  name: ReactNode;
+  onAddCoins?: () => void;
+  onAddGems?: () => void;
+  onOpenSettings?: () => void;
+}
+
+function RoyalChrome({
+  name,
+  onAddCoins = ignoreAction,
+  onAddGems = ignoreAction,
+  onOpenSettings = ignoreAction,
+}: RoyalChromeProps) {
   return (
     <Chrome>
       <ChromeRow tone="velvet">
@@ -95,11 +115,17 @@ function RoyalChrome({ name }: { name: ReactNode }) {
           name="Max"
           caption="LEVEL 12"
         />
-        <ResourceCounters />
+        <ResourceCounters onAddCoins={onAddCoins} onAddGems={onAddGems} />
       </ChromeRow>
       <ChromeRow tone="stone">
         <ScreenName>{name}</ScreenName>
-        <Button tone="primary" size="small" iconOnly aria-label="Settings">
+        <Button
+          tone="primary"
+          size="small"
+          iconOnly
+          aria-label="Settings"
+          onClick={onOpenSettings}
+        >
           ⚙
         </Button>
       </ChromeRow>
@@ -107,11 +133,24 @@ function RoyalChrome({ name }: { name: ReactNode }) {
   );
 }
 
-function RoyalTabs({ initial }: { initial: string }) {
+interface RoyalTabsProps extends NavigationProps {
+  initial: string;
+}
+
+function RoyalTabs({ initial, onNavigate = ignoreAction }: RoyalTabsProps) {
   const [tab, setTab] = useState(initial);
 
+  const handleTabChange = (value: string) => {
+    setTab(value);
+    onNavigate(value);
+  };
+
   return (
-    <TabBar aria-label="Primary navigation" value={tab} onValueChange={setTab}>
+    <TabBar
+      aria-label="Primary navigation"
+      value={tab}
+      onValueChange={handleTabChange}
+    >
       <Tab value="shop" icon="🛒">
         Shop
       </Tab>
@@ -131,11 +170,35 @@ function RoyalTabs({ initial }: { initial: string }) {
   );
 }
 
-export function LobbyScreen() {
+// SCREEN_RECIPE: LobbyScreen
+export interface LobbyScreenProps extends NavigationProps {
+  onAddCoins?: () => void;
+  onAddGems?: () => void;
+  onClaimGift?: () => void;
+  onOpenPass?: () => void;
+  onOpenSettings?: () => void;
+  onPlay?: () => void;
+}
+
+/** Copy-ready dashboard recipe; hosts replace sample data and callbacks. */
+export function LobbyScreen({
+  onAddCoins = ignoreAction,
+  onAddGems = ignoreAction,
+  onClaimGift = ignoreAction,
+  onNavigate = ignoreAction,
+  onOpenPass = ignoreAction,
+  onOpenSettings = ignoreAction,
+  onPlay = ignoreAction,
+}: LobbyScreenProps = {}) {
   return (
     <Screen aria-label="Royal Games home">
-      <RoyalChrome name="Home" />
-      <Body>
+      <RoyalChrome
+        name="Home"
+        onAddCoins={onAddCoins}
+        onAddGems={onAddGems}
+        onOpenSettings={onOpenSettings}
+      />
+      <Body layout="dashboard">
         <Wordmark strap="His Majesty awaits">Royal Games</Wordmark>
         <Panel tone="paper">
           <GroupKicker variant="compact">Chapter 3</GroupKicker>
@@ -151,7 +214,7 @@ export function LobbyScreen() {
               ⏳ <b>2d 4h</b>
             </TimerPill>
           </Counters>
-          <Button tone="accent" size="hero">
+          <Button tone="accent" size="hero" onClick={onPlay}>
             PLAY
           </Button>
         </Panel>
@@ -164,7 +227,7 @@ export function LobbyScreen() {
             control={
               <Counters aria-label="Royal Pass position and action">
                 <PageDots count={3} index={0} />
-                <Button tone="gold" size="small">
+                <Button tone="gold" size="small" onClick={onOpenPass}>
                   GO
                 </Button>
               </Counters>
@@ -180,7 +243,7 @@ export function LobbyScreen() {
             label="Daily Gift ready"
             control={
               <Counters aria-label="Daily gift actions">
-                <Button tone="positive" size="small">
+                <Button tone="positive" size="small" onClick={onClaimGift}>
                   CLAIM
                 </Button>
                 <TimerPill aria-label="Two days and four hours remaining">
@@ -190,21 +253,33 @@ export function LobbyScreen() {
             }
           />
         </Dock>
-        <RoyalTabs initial="home" />
+        <RoyalTabs initial="home" onNavigate={onNavigate} />
       </BottomStack>
     </Screen>
   );
 }
 
-export function MapScreen() {
+// SCREEN_RECIPE: MapScreen
+export interface MapScreenProps extends NavigationProps {
+  onBack?: () => void;
+  onSelectStage?: (stage: number) => void;
+}
+
+/** Copy-ready authored-scene recipe with host-owned stage actions. */
+export function MapScreen({
+  onBack = ignoreAction,
+  onNavigate = ignoreAction,
+  onSelectStage = ignoreAction,
+}: MapScreenProps = {}) {
   return (
     <Screen aria-label="World map">
       <MapScene aria-label="Emberfall route">
         <MapPin
-          variant="static"
+          variant="button"
           state="complete"
           stars={2}
           label="Stage seven complete"
+          onPress={() => onSelectStage(7)}
           style={{
             insetInlineStart: "calc(var(--rg-u) * 70)",
             insetBlockStart: "calc(var(--rg-u) * 590)",
@@ -213,10 +288,11 @@ export function MapScreen() {
           7
         </MapPin>
         <MapPin
-          variant="static"
+          variant="button"
           state="complete"
           stars={3}
           label="Stage eight complete"
+          onPress={() => onSelectStage(8)}
           style={{
             insetInlineStart: "calc(var(--rg-u) * 277)",
             insetBlockStart: "calc(var(--rg-u) * 488)",
@@ -228,7 +304,7 @@ export function MapScreen() {
           variant="button"
           state="current"
           label="Play stage nine"
-          onPress={() => undefined}
+          onPress={() => onSelectStage(9)}
           style={{
             insetInlineStart: "calc(var(--rg-u) * 150)",
             insetBlockStart: "calc(var(--rg-u) * 388)",
@@ -260,7 +336,13 @@ export function MapScreen() {
         </MapPin>
       </MapScene>
       <FloatChrome variant="screen">
-        <Button tone="primary" size="small" iconOnly aria-label="Back">
+        <Button
+          tone="primary"
+          size="small"
+          iconOnly
+          aria-label="Back"
+          onClick={onBack}
+        >
           ‹
         </Button>
         <Ribbon size="compact">World 2 · Emberfall</Ribbon>
@@ -274,20 +356,37 @@ export function MapScreen() {
             label="Castle Gates"
             caption="Beat it with 3 ★ to earn a chest"
             control={
-              <Button tone="accent" size="small">
+              <Button
+                tone="accent"
+                size="small"
+                onClick={() => onSelectStage(9)}
+              >
                 GO
               </Button>
             }
           />
           <Meter value={12} max={20} label="Chapter 3" valueText="12 / 20" />
         </Dock>
-        <RoyalTabs initial="map" />
+        <RoyalTabs initial="map" onNavigate={onNavigate} />
       </BottomStack>
     </Screen>
   );
 }
 
-export function ShopScreen() {
+// SCREEN_RECIPE: ShopScreen
+export interface ShopScreenProps extends NavigationProps {
+  onBuyBundle?: () => void;
+  onBuyPack?: (pack: "80" | "500" | "1200") => void;
+  onWatchAd?: () => void;
+}
+
+/** Copy-ready commerce recipe with stable product and action columns. */
+export function ShopScreen({
+  onBuyBundle = ignoreAction,
+  onBuyPack = ignoreAction,
+  onNavigate = ignoreAction,
+  onWatchAd = ignoreAction,
+}: ShopScreenProps = {}) {
   return (
     <Screen aria-label="Royal Shop">
       <Dock edge="top" tone="stone" density="compact">
@@ -325,7 +424,7 @@ export function ShopScreen() {
             </BundleCell>
             <BundleCell label="5 boosts">✦</BundleCell>
           </BundleCells>
-          <Button tone="gold" width="extended">
+          <Button tone="gold" width="extended" onClick={onBuyBundle}>
             <Strike>€19.99</Strike> €9.99 · BUY
           </Button>
         </Panel>
@@ -335,7 +434,11 @@ export function ShopScreen() {
             <Pack
               art={<Gem size="large" />}
               action={
-                <Button tone="gold" size="small">
+                <Button
+                  tone="gold"
+                  size="small"
+                  onClick={() => onBuyPack("80")}
+                >
                   €1.99
                 </Button>
               }
@@ -345,7 +448,11 @@ export function ShopScreen() {
             <Pack
               art={<Gem size="large" />}
               action={
-                <Button tone="gold" size="small">
+                <Button
+                  tone="gold"
+                  size="small"
+                  onClick={() => onBuyPack("500")}
+                >
                   €8.99
                 </Button>
               }
@@ -355,7 +462,11 @@ export function ShopScreen() {
             <Pack
               art={<Gem size="large" />}
               action={
-                <Button tone="gold" size="small">
+                <Button
+                  tone="gold"
+                  size="small"
+                  onClick={() => onBuyPack("1200")}
+                >
                   €17.99
                 </Button>
               }
@@ -372,19 +483,31 @@ export function ShopScreen() {
             title="Free coins"
             caption="Watch an ad · 150 coins"
             action={
-              <Button tone="positive" size="small">
+              <Button tone="positive" size="small" onClick={onWatchAd}>
                 FREE
               </Button>
             }
           />
         </Dock>
-        <RoyalTabs initial="shop" />
+        <RoyalTabs initial="shop" onNavigate={onNavigate} />
       </BottomStack>
     </Screen>
   );
 }
 
-export function VictoryScreen() {
+// SCREEN_RECIPE: VictoryScreen
+export interface VictoryScreenProps {
+  onContinue?: () => void;
+  onReplay?: () => void;
+  onShare?: () => void;
+}
+
+/** Copy-ready result recipe with an independent, non-overlapping action dock. */
+export function VictoryScreen({
+  onContinue = ignoreAction,
+  onReplay = ignoreAction,
+  onShare = ignoreAction,
+}: VictoryScreenProps = {}) {
   return (
     <Screen aria-label="Victory results" tone="forest">
       <Dim intensity="strong" />
@@ -425,14 +548,14 @@ export function VictoryScreen() {
       </Body>
       <BottomStack>
         <Dock tone="primary">
-          <Button tone="positive" size="hero" width="wide">
+          <Button tone="positive" size="hero" width="wide" onClick={onContinue}>
             CONTINUE
           </Button>
           <Counters aria-label="Result actions" layout="spread">
-            <Button tone="primary" size="small" width="full">
+            <Button tone="primary" size="small" width="full" onClick={onReplay}>
               ↻ REPLAY
             </Button>
-            <Button tone="primary" size="small" width="full">
+            <Button tone="primary" size="small" width="full" onClick={onShare}>
               SHARE
             </Button>
           </Counters>
@@ -442,7 +565,13 @@ export function VictoryScreen() {
   );
 }
 
-export function RanksScreen() {
+// SCREEN_RECIPE: RanksScreen
+export interface RanksScreenProps extends NavigationProps {}
+
+/** Copy-ready leaderboard recipe with independent podium and list regions. */
+export function RanksScreen({
+  onNavigate = ignoreAction,
+}: RanksScreenProps = {}) {
   return (
     <Screen aria-label="Season leaderboard">
       <Dock edge="top" tone="primary">
@@ -477,7 +606,7 @@ export function RanksScreen() {
           />
         </Podium>
       </Dock>
-      <Body>
+      <Body layout="list">
         <Panel tone="primary" density="list">
           <RankRow
             position={4}
@@ -528,13 +657,32 @@ export function RanksScreen() {
         </Panel>
       </Body>
       <BottomStack>
-        <RoyalTabs initial="ranks" />
+        <RoyalTabs initial="ranks" onNavigate={onNavigate} />
       </BottomStack>
     </Screen>
   );
 }
 
-export function SettingsScreen() {
+// SCREEN_RECIPE: SettingsScreen
+export interface SettingsScreenProps extends NavigationProps {
+  onBack?: () => void;
+  onEditProfile?: () => void;
+  onOpenCloudSave?: () => void;
+  onOpenLanguage?: () => void;
+  onRestore?: () => void;
+  onSupport?: () => void;
+}
+
+/** Copy-ready controlled settings recipe with a dedicated scrolling form slot. */
+export function SettingsScreen({
+  onBack = ignoreAction,
+  onEditProfile = ignoreAction,
+  onNavigate = ignoreAction,
+  onOpenCloudSave = ignoreAction,
+  onOpenLanguage = ignoreAction,
+  onRestore = ignoreAction,
+  onSupport = ignoreAction,
+}: SettingsScreenProps = {}) {
   const [music, setMusic] = useState(true);
   const [sounds, setSounds] = useState(true);
   const [notifications, setNotifications] = useState(true);
@@ -545,7 +693,13 @@ export function SettingsScreen() {
         <SettingsRow
           variant="control"
           icon={
-            <Button tone="primary" size="small" iconOnly aria-label="Back">
+            <Button
+              tone="primary"
+              size="small"
+              iconOnly
+              aria-label="Back"
+              onClick={onBack}
+            >
               ‹
             </Button>
           }
@@ -565,13 +719,13 @@ export function SettingsScreen() {
           label="Max"
           caption="Court member since 2026"
           control={
-            <Button tone="primary" size="small">
+            <Button tone="primary" size="small" onClick={onEditProfile}>
               EDIT
             </Button>
           }
         />
       </Dock>
-      <Body>
+      <Body layout="form">
         <Panel tone="paper">
           <GroupKicker>Audio</GroupKicker>
           <SettingsRow
@@ -612,7 +766,7 @@ export function SettingsScreen() {
             icon="🌐︎"
             label="Language"
             trailing="English"
-            onPress={() => undefined}
+            onPress={onOpenLanguage}
           />
           <SettingsRow
             variant="control"
@@ -633,23 +787,28 @@ export function SettingsScreen() {
             icon="☁︎"
             label="Cloud save"
             trailing="Synced ✓"
-            onPress={() => undefined}
+            onPress={onOpenCloudSave}
           />
         </Panel>
       </Body>
       <BottomStack>
         <Dock tone="stone" density="compact">
           <Counters aria-label="Settings support actions" layout="spread">
-            <Button tone="paper" size="small" width="full">
+            <Button tone="paper" size="small" width="full" onClick={onRestore}>
               RESTORE
             </Button>
-            <Button tone="primary" size="small" width="full">
+            <Button
+              tone="primary"
+              size="small"
+              width="full"
+              onClick={onSupport}
+            >
               SUPPORT
             </Button>
           </Counters>
-          <Version>royal-games-ui · v1.2.0</Version>
+          <Version>royal-games-ui · v1.3.0</Version>
         </Dock>
-        <RoyalTabs initial="more" />
+        <RoyalTabs initial="more" onNavigate={onNavigate} />
       </BottomStack>
     </Screen>
   );
